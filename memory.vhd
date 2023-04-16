@@ -8,7 +8,7 @@ ENTITY memory IS
         clk : IN STD_LOGIC;
         memWrite, memRead : IN STD_LOGIC; -- read and write enables
         OpCode : IN STD_LOGIC_VECTOR(15 DOWNTO 0); -- load = 10000, store = 10001 (same as aluoperation )
-        Rsrc, Rdst : IN STD_LOGIC_VECTOR(15 DOWNTO 0); -- rsrc = rsrc1, rdst = rdst/rsrc2 in data sheet
+        address, value : IN STD_LOGIC_VECTOR(15 DOWNTO 0); --  adress = location for loading or location for storing in mem, value = value to be stored
         dataout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)); -- data out from this block
 END ENTITY memory;
 
@@ -21,11 +21,11 @@ BEGIN
         IF rising_edge(clk) THEN
         
             IF (memWrite = '1' AND OpCode = '10001') THEN --store
-                ram(to_integer(unsigned((Rdst)))) <= Rsrc; --put value of source inside mem location
+                ram(to_integer(unsigned((address)))) <= value; --put value inside mem location
                 dataout <= (OTHERS => '0'); --output 0000s
 
             ELSIF (memRead = '1' AND OpCode = '10000') THEN --load
-                dataout <= ram(to_integer(unsigned((Rsrc)))); --output mem contents of mem location rsrcs
+                dataout <= ram(to_integer(unsigned((address)))); --output contents of mem location 
 
             END IF;
 
