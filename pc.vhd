@@ -8,10 +8,11 @@ Entity pc is
 		clk:in std_logic;
 		rs:in std_logic;
 		count:out std_logic_vector (15 downto 0)); --16 bit pc value
+END ENTITY pc;
 
 architecture archPc of pc IS
 
-	signal countTemp:integer;
+	signal countTemp:integer :=0;
 
 	begin
 		process(clk,en,rs) is
