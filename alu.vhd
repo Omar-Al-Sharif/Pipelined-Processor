@@ -9,6 +9,8 @@ ENTITY alu IS
 		aluOperation : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
 		zeroFlag, negativeFlag, carryFlag : OUT STD_LOGIC;
 		aluToMemAdd : OUT STD_LOGIC_VECTOR(15 DOWNTO 0); --the address fed to memory (whether to read or write) -> ithink it's dependant on write enable or read enable from memory
+		-- integration from outside or gets passed by alu, ask omar since he is doing the integration, might be not needed --ziad comment
+		--fix naming aluToMemAddress for readability to --ziad comment
 		result : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 	);
 END ENTITY;
@@ -37,12 +39,12 @@ BEGIN
 
 		ELSIF (aluOperation = "01100") THEN --IN-- //need help here
 			aluToMemAdd <= (OTHERS => '0');
-			resultSignal <= (OTHERS => '0');
+			resultSignal <= (OTHERS => '0'); --this is correct inport value passes by buffers only till it reaches mux --ziad comment
 			result <= x"0000";
 
 		ELSIF (aluOperation = "10000") THEN --LDD--
 			aluToMemAdd <= Src1;
-			resultSignal <= (OTHERS => '0'); 
+			resultSignal <= (OTHERS => '0'); --should be src1 like result? --ziad comment
 			result <= x"0000";
 
 		ELSIF (aluOperation = "10001") THEN --STD--
