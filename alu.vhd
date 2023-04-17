@@ -8,9 +8,9 @@ ENTITY alu IS
 		Src1, Src2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 		aluOperation : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
 		zeroFlag, negativeFlag, carryFlag : OUT STD_LOGIC;
-		aluToMemAdd : OUT STD_LOGIC_VECTOR(15 DOWNTO 0); --the address fed to memory (whether to read or write) -> ithink it's dependant on write enable or read enable from memory
+		aluToMemAddress : OUT STD_LOGIC_VECTOR(15 DOWNTO 0); --the address fed to memory (whether to read or write) -> ithink it's dependant on write enable or read enable from memory
 		-- integration from outside or gets passed by alu, ask omar since he is doing the integration, might be not needed --ziad comment
-		--fix naming aluToMemAddress for readability to --ziad comment
+		--fix naming aluToMemAddressress for readability to --ziad comment
 		result : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 	);
 END ENTITY;
@@ -23,37 +23,37 @@ BEGIN
 	PROCESS (aluOperation, Src1, Src2, resultSignal)
 	BEGIN
 		IF (aluOperation = "00000") THEN --NOP--
-			aluToMemAdd <= (OTHERS => '0');
+			aluToMemAddress <= (OTHERS => '0');
 			resultSignal <= x"0000";
 			result <= x"0000";
 
 		ELSIF (aluOperation = "00100") THEN --INC--
-			aluToMemAdd <= (OTHERS => '0');
+			aluToMemAddress <= (OTHERS => '0');
 			resultSignal <= Src1 + 1;
 			result <= Src1 + 1;
 
 		ELSIF (aluOperation = "01010") THEN --AND--
-			aluToMemAdd <= (OTHERS => '0');
+			aluToMemAddress <= (OTHERS => '0');
 			resultSignal <= Src1 AND Src2;
 			result <= Src1 AND Src2;
 
 		ELSIF (aluOperation = "01100") THEN --IN-- //need help here
-			aluToMemAdd <= (OTHERS => '0');
+			aluToMemAddress <= (OTHERS => '0');
 			resultSignal <= (OTHERS => '0'); --this is correct inport value passes by buffers only till it reaches mux --ziad comment
 			result <= x"0000";
 
 		ELSIF (aluOperation = "10000") THEN --LDD--
-			aluToMemAdd <= Src1;
+			aluToMemAddress <= Src1;
 			resultSignal <= (OTHERS => '0'); --should be src1 like result? --ziad comment
 			result <= x"0000";
 
 		ELSIF (aluOperation = "10001") THEN --STD--
-			aluToMemAdd <= Src2;
+			aluToMemAddress <= Src2;
 			resultSignal <= Src1;
 			result <= Src1;
 
 		ELSE
-			aluToMemAdd <= (OTHERS => '0');
+			aluToMemAddress <= (OTHERS => '0');
 			resultSignal <= (OTHERS => '0');
 			result <= x"0000";
 
