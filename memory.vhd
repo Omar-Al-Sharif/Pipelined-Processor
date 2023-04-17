@@ -21,7 +21,7 @@ BEGIN
         
             IF (memWrite = '1') THEN --store
                 ram(to_integer(unsigned((address)))) <= value; --put value inside mem location
-                dataout <= value;
+                dataout <= (OTHERS => '0');
 
             ELSIF (memRead = '1') THEN --load
                 dataout <= ram(to_integer(unsigned((address)))); --output contents of mem location 
