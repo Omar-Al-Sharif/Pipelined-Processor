@@ -1,0 +1,57 @@
+Control signals:
+================
+NOP:
+memWrite ->0
+memRead -> 0
+wbEnable -> 0
+aluEnable -> 0
+aluoperatiopn->00000
+memToReg-> 0
+
+INC:
+memWrite ->0
+memRead -> 0
+wbEnable -> 1
+aluEnable -> 1
+aluoperatiopn->00100 (increment op cod)
+memToReg-> 0
+
+AND:
+memWrite ->0
+memRead -> 0
+wbEnable -> 1
+aluEnable -> 1
+aluoperatiopn->01010 (and op code)
+memToReg-> 0
+
+IN:
+memWrite ->0
+memRead -> 0
+wbEnable -> 1
+aluEnable -> 1
+aluoperatiopn->01100 (IN op)
+memToReg-> 0
+
+LDD:
+memWrite ->0
+memRead -> 1
+wbEnable -> 1
+aluEnable -> 1
+aluoperatiopn->10000 (LDD op)
+memToReg-> 1
+
+STD:
+memWrite ->1
+memRead -> 0
+wbEnable -> 0
+aluEnable -> 1
+aluoperatiopn->10001 (STD op)
+memToReg-> 0
+
+
+NOP = 00000, 00h
+INC = 00100, 04h
+AND = 01010, 0Ah
+IN  = 01100, 0Ch
+LDD = 10000, 10h
+STD = 10001, 11h

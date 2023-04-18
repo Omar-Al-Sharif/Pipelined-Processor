@@ -1,0 +1,31 @@
+vsim work.controller
+# vsim work.controller 
+# Start time: 00:56:27 on Apr 17,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.controller(controllerflow)
+add wave -position insertpoint  \
+sim:/controller/opcode \
+sim:/controller/memWrite \
+sim:/controller/memRead \
+sim:/controller/wbEnable \
+sim:/controller/aluEnable \
+sim:/controller/memToReg \
+sim:/controller/aluOperation
+force -freeze sim:/controller/opcode 00000 0
+run
+run
+force -freeze sim:/controller/opcode 00100 0
+run
+force -freeze sim:/controller/opcode 01010 0
+run
+force -freeze sim:/controller/opcode 01100 0
+run
+force -freeze sim:/controller/opcode 10000 0
+run
+force -freeze sim:/controller/opcode 10001 0
+run
