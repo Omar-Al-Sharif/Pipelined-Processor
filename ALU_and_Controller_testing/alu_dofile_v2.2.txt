@@ -1,0 +1,51 @@
+vsim -gui work.alu
+# vsim -gui work.alu 
+# Start time: 19:43:45 on Apr 18,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.alu(aluflow)
+add wave -position insertpoint  \
+sim:/alu/Src1 \
+sim:/alu/Src2 \
+sim:/alu/aluOperation \
+sim:/alu/aluEnable \
+sim:/alu/zeroFlag \
+sim:/alu/negativeFlag \
+sim:/alu/carryFlag \
+sim:/alu/aluToMemAddress \
+sim:/alu/result \
+sim:/alu/resultSignal
+force -freeze sim:/alu/Src1 FFFF 0
+force -freeze sim:/alu/Src2 5667 0
+force -freeze sim:/alu/aluOperation 00 0
+force -freeze sim:/alu/aluEnable 0 0
+run
+force -freeze sim:/alu/aluEnable 1 0
+force -freeze sim:/alu/aluOperation 04 0
+run
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 100 ps  Iteration: 0  Instance: /alu
+force -freeze sim:/alu/aluEnable 0 0
+force -freeze sim:/alu/aluOperation 0C 0
+force -freeze sim:/alu/aluOperation 0a 0
+run
+force -freeze sim:/alu/aluEnable 1 0
+run
+force -freeze sim:/alu/aluEnable 0 0
+force -freeze sim:/alu/aluOperation 0c 0
+run
+force -freeze sim:/alu/aluOperation 10 0
+force -freeze sim:/alu/aluEnable 1 0
+run
+force -freeze sim:/alu/aluEnable 0 0
+run
+force -freeze sim:/alu/aluOperation 11 0
+force -freeze sim:/alu/aluEnable 1 0
+run
+force -freeze sim:/alu/Src1 1234 0
+force -freeze sim:/alu/aluOperation 10 0
+run
