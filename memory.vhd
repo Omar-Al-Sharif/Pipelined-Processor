@@ -18,20 +18,21 @@ BEGIN
     PROCESS (clk) IS
     BEGIN
         IF rising_edge(clk) THEN
-        
-            IF (memWrite = '1') THEN --store
+            IF ((memRead = '1' OR memWrite = '1') AND address >= 1024) THEN -- added out of bounds check for memory
+                dataout <= (OTHERS => '0');
+
+            ELSIF (memWrite = '1') THEN --store
                 ram(to_integer(unsigned((address)))) <= value; --put value inside mem location
                 dataout <= (OTHERS => '0');
 
             ELSIF (memRead = '1') THEN --load
                 dataout <= ram(to_integer(unsigned((address)))); --output contents of mem location 
 
-            else  dataout <= value;
+            ELSE
+                dataout <= value;
 
             END IF;
 
         END IF;
     END PROCESS;
-    
-
 END archOfMemory;
