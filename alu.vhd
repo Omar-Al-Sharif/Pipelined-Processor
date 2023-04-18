@@ -7,6 +7,7 @@ ENTITY alu IS
 	PORT (
 		Src1, Src2 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 		aluOperation : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+		aluEnable : IN STD_LOGIC;
 		zeroFlag, negativeFlag, carryFlag : OUT STD_LOGIC;
 		aluToMemAddress : OUT STD_LOGIC_VECTOR(15 DOWNTO 0); --the address fed to memory (whether to read or write) -> ithink it's dependant on write enable or read enable from memory
 		-- integration from outside or gets passed by alu, ask omar since he is doing the integration, might be not needed --ziad comment
@@ -20,63 +21,66 @@ ARCHITECTURE aluFlow OF alu IS
 
 BEGIN
 
-	PROCESS (aluOperation, Src1, Src2, resultSignal)
+	PROCESS (aluOperation, Src1, Src2, resultSignal,aluEnable)
 	BEGIN
-		IF (aluOperation = "00000") THEN --NOP--
-			aluToMemAddress <= (OTHERS => '0');
-			resultSignal <= x"0000";
-			result <= x"0000";
+		IF(aluEnable = '1') THEN 
+			IF (aluOperation = "00000") THEN --NOP--
+				aluToMemAddress <= (OTHERS => '0');
+				resultSignal <= x"0000";
+				result <= x"0000";
 
-		ELSIF (aluOperation = "00100") THEN --INC--
-			aluToMemAddress <= (OTHERS => '0');
-			resultSignal <= Src1 + 1;
-			result <= Src1 + 1;
+			ELSIF (aluOperation = "00100") THEN --INC--
+				aluToMemAddress <= (OTHERS => '0');
+				resultSignal <= Src1 + 1;
+				result <= Src1 + 1;
 
-		ELSIF (aluOperation = "01010") THEN --AND--
-			aluToMemAddress <= (OTHERS => '0');
-			resultSignal <= Src1 AND Src2;
-			result <= Src1 AND Src2;
+			ELSIF (aluOperation = "01010") THEN --AND--
+				aluToMemAddress <= (OTHERS => '0');
+				resultSignal <= Src1 AND Src2;
+				result <= Src1 AND Src2;
 
-		ELSIF (aluOperation = "01100") THEN --IN-- //need help here
-			aluToMemAddress <= (OTHERS => '0');
-			resultSignal <= (OTHERS => '0'); --this is correct inport value passes by buffers only till it reaches mux --ziad comment
-			result <= x"0000";
+			ELSIF (aluOperation = "01100") THEN --IN-- //need help here
+				aluToMemAddress <= (OTHERS => '0');
+				resultSignal <= (OTHERS => '0'); --this is correct inport value passes by buffers only till it reaches mux --ziad comment
+				result <= x"0000";
 
-		ELSIF (aluOperation = "10000") THEN --LDD--
-			aluToMemAddress <= Src1;
-			resultSignal <= (OTHERS => '0'); --should be src1 like result? --ziad comment
-			result <= x"0000";
+			ELSIF (aluOperation = "10000") THEN --LDD--
+				aluToMemAddress <= Src1;
+				resultSignal <= (OTHERS => '0'); --should be src1 like result? --ziad comment
+				result <= x"0000";
 
-		ELSIF (aluOperation = "10001") THEN --STD--
-			aluToMemAddress <= Src2;
-			resultSignal <= Src1;
-			result <= Src1;
+			ELSIF (aluOperation = "10001") THEN --STD--
+				aluToMemAddress <= Src2;
+				resultSignal <= Src1;
+				result <= Src1;
 
-		ELSE
-			aluToMemAddress <= (OTHERS => '0');
-			resultSignal <= (OTHERS => '0');
-			result <= x"0000";
+			ELSE
+				aluToMemAddress <= (OTHERS => '0');
+				resultSignal <= (OTHERS => '0');
+				result <= x"0000";
 
-		END IF;
+			END IF;
 
-		IF (aluOperation = "00100") THEN --in case of inc operation only
-			IF (Src1(15) = '1' AND resultSignal(15) = '0') THEN --check the MSB of src1 and result MSB--
-				carryFlag <= '1'; --in this case ffff+1 is the one which will set the carryFlag--
+			IF (aluOperation = "00100") THEN --in case of inc operation only
+				IF (Src1(15) = '1' AND resultSignal(15) = '0') THEN --check the MSB of src1 and result MSB--
+					carryFlag <= '1'; --in this case ffff+1 is the one which will set the carryFlag--
+				ELSE
+					carryFlag <= '0';
+				END IF;
 			ELSE
 				carryFlag <= '0';
 			END IF;
-		ELSE
-			carryFlag <= '0';
-		END IF;
-		
-		-- Set negative flag if result is negative
-		negativeFlag <= resultSignal(15);
+			
+			-- Set negative flag if result is negative
+			negativeFlag <= resultSignal(15);
 
-		IF (resultSignal = x"0000") THEN
-			zeroFlag <= '1';
-		ELSE
-			zeroFlag <= '0';
+			IF (resultSignal = x"0000") THEN
+				zeroFlag <= '1';
+			ELSE
+				zeroFlag <= '0';
 
+			END IF;
+		ELSE
 		END IF;
 	END PROCESS;
 
