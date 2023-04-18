@@ -46,8 +46,8 @@ BEGIN
 
 			ELSIF (aluOperation = "10000") THEN --LDD--
 				aluToMemAddress <= Src1;
-				resultSignal <= (OTHERS => '0'); --should be src1 like result? --ziad comment
-				result <= x"0000";
+				--resultSignal <= (OTHERS => '0'); --should be src1 like result? --ziad comment
+				--result <= x"0000";
 
 			ELSIF (aluOperation = "10001") THEN --STD--
 				aluToMemAddress <= Src2;
