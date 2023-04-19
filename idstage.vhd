@@ -32,9 +32,10 @@ ARCHITECTURE IDStage OF idstage IS
 
     COMPONENT controller IS
         PORT (
-            opcode : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-            memWrite, memRead, wbEnable, aluEnable, memToReg : OUT STD_LOGIC;
-            aluOperation : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
+
+        opcode : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+        memWrite, memRead, wbEnable, aluEnable : OUT STD_LOGIC;
+        aluOperation : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
 
         );
     END COMPONENT;
