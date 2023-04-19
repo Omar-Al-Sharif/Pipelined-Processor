@@ -16,7 +16,7 @@ Z2 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 99
+!i122 111
 Z6 dD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project
 Z7 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/alu.vhd
 Z8 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/alu.vhd
@@ -26,9 +26,9 @@ V=2ddGFHSKdR5I0P`OAg_d2
 !s100 e:PeC@NTJY3784cYaBQOD2
 Z9 OV;C;2020.1;71
 32
-Z10 !s110 1681936878
+Z10 !s110 1681937557
 !i10b 1
-Z11 !s108 1681936878.000000
+Z11 !s108 1681937557.000000
 Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/alu.vhd|
 Z13 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/alu.vhd|
 !i113 1
@@ -41,7 +41,7 @@ R3
 R4
 R5
 DEx4 work 3 alu 0 22 =2ddGFHSKdR5I0P`OAg_d2
-!i122 99
+!i122 111
 l22
 L19 69
 VSbnbdmbAcRz4K4_B`N[QD0
@@ -63,7 +63,7 @@ R2
 R3
 R4
 R5
-!i122 100
+!i122 112
 R6
 Z17 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/axram.vhd
 Z18 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/axram.vhd
@@ -88,7 +88,7 @@ R3
 R4
 R5
 DEx4 work 5 axram 0 22 6g?BZOg<Ti9a[O4j_Uo<62
-!i122 100
+!i122 112
 l23
 L20 19
 VT27l00bd0Rkfjf`@o;A4m1
@@ -107,7 +107,7 @@ Ebuff
 R16
 R4
 R5
-!i122 101
+!i122 113
 R6
 Z21 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/buffer.vhd
 Z22 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/buffer.vhd
@@ -129,7 +129,7 @@ Abuff_arch
 R4
 R5
 DEx4 work 4 buff 0 22 7bm_MJhPcen08SX@gg0zQ0
-!i122 101
+!i122 113
 l12
 L11 12
 VnVlCfCLSP1;AS5J4WjX0z0
@@ -151,7 +151,7 @@ R2
 R3
 R4
 R5
-!i122 102
+!i122 114
 R6
 Z26 8D:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\controller.vhd
 Z27 FD:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\controller.vhd
@@ -176,7 +176,7 @@ R3
 R4
 R5
 DEx4 work 10 controller 0 22 FzOR14FPU3CPn?Xo^16fR3
-!i122 102
+!i122 114
 l16
 L15 49
 VEHoHGI<Yb4E0z?i9f3MDM3
@@ -191,28 +191,75 @@ R29
 !i113 1
 R14
 R15
-Eidstage
-Z30 w1681936872
+Eexstage
+Z30 w1681937499
 R1
 R2
 R3
 R4
 R5
-!i122 103
+!i122 123
 R6
-Z31 8D:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\idstage.vhd
-Z32 FD:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\idstage.vhd
+Z31 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/exstage.vhd
+Z32 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/exstage.vhd
+l0
+L6 1
+Vd45;_g;kLjc4JmWRH?>4h2
+!s100 CA2>MeWlm3]ZS7<GnV1;k2
+R9
+32
+Z33 !s110 1681937559
+!i10b 1
+Z34 !s108 1681937559.000000
+Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/exstage.vhd|
+!s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/exstage.vhd|
+!i113 1
+R14
+R15
+Aexstage
+R1
+R2
+R3
+R4
+R5
+DEx4 work 7 exstage 0 22 d45;_g;kLjc4JmWRH?>4h2
+!i122 123
+l35
+L19 21
+V5S@n>EXl4g[OHRCUG=FAb3
+!s100 ?0IQcYoog@eDc3aam>8kP2
+R9
+32
+R33
+!i10b 1
+R34
+R35
+Z36 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/exstage.vhd|
+!i113 1
+R14
+R15
+Eidstage
+Z37 w1681936872
+R1
+R2
+R3
+R4
+R5
+!i122 115
+R6
+Z38 8D:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\idstage.vhd
+Z39 FD:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\idstage.vhd
 l0
 L6 1
 Vb;<G;C0?f0m2@PdG<^j8b3
 !s100 VaECMKRZ=8?_dJVb72;Dn2
 R9
 32
-Z33 !s110 1681936879
+Z40 !s110 1681937558
 !i10b 1
-R11
-Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\idstage.vhd|
-Z35 !s107 D:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\idstage.vhd|
+Z41 !s108 1681937558.000000
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\idstage.vhd|
+Z43 !s107 D:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\idstage.vhd|
 !i113 1
 R14
 R15
@@ -223,43 +270,43 @@ R3
 R4
 R5
 DEx4 work 7 idstage 0 22 b;<G;C0?f0m2@PdG<^j8b3
-!i122 103
+!i122 115
 l42
 L21 26
 Vz@jE3KQ3BLUL^^Jnc0fn:3
 !s100 I=;<[5;H`NNj4TB[>1?MY0
 R9
 32
-R33
+R40
 !i10b 1
-R11
-R34
-R35
+R41
+R42
+R43
 !i113 1
 R14
 R15
 Eifstage
-Z36 w1681932284
+Z44 w1681932284
 R1
 R2
 R3
 R4
 R5
-!i122 104
+!i122 116
 R6
-Z37 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd
-Z38 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd
+Z45 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd
+Z46 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd
 l0
 L6 1
 VTG<d3>P9H]CcUMJQ^>mWK1
 !s100 FaBaZa;P>HBDD6:ho2Xb;1
 R9
 32
-R33
+R40
 !i10b 1
-Z39 !s108 1681936879.000000
-Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd|
-Z41 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd|
+R41
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd|
+Z48 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd|
 !i113 1
 R14
 R15
@@ -270,40 +317,40 @@ R3
 R4
 R5
 DEx4 work 7 ifstage 0 22 TG<d3>P9H]CcUMJQ^>mWK1
-!i122 104
+!i122 116
 l36
 L13 29
 VNIj639I6XmVF;X<3>DC=n2
 !s100 HinLdB7IEATF86AK[CGVk0
 R9
 32
-R33
-!i10b 1
-R39
 R40
+!i10b 1
 R41
+R47
+R48
 !i113 1
 R14
 R15
 Einstructioncache
-Z42 w1681930460
+Z49 w1681930460
 R4
 R5
-!i122 105
+!i122 117
 R6
-Z43 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd
-Z44 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd
+Z50 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd
+Z51 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd
 l0
 L4 1
 Viha1dmLBfo?=M<<HO1F`L2
 !s100 6G9NW`A;gnc`OmOBOHN1_1
 R9
 32
-R33
+R40
 !i10b 1
-R39
-Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd|
-Z46 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd|
+R41
+Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd|
+Z53 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd|
 !i113 1
 R14
 R15
@@ -311,18 +358,18 @@ Ainstructioncache_arch1
 R4
 R5
 DEx4 work 16 instructioncache 0 22 iha1dmLBfo?=M<<HO1F`L2
-!i122 105
+!i122 117
 l26
 L14 20
 V[D^P2dK2lJG?RB6k:A>H^2
 !s100 <F?W2DmIP8boEFbEW_Bjl1
 R9
 32
-R33
+R40
 !i10b 1
-R39
-R45
-R46
+R41
+R52
+R53
 !i113 1
 R14
 R15
@@ -333,21 +380,21 @@ R2
 R3
 R4
 R5
-!i122 106
+!i122 118
 R6
-Z47 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.vhd
-Z48 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.vhd
+Z54 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.vhd
+Z55 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.vhd
 l0
 L6 1
 VI`fF4B_`od1Fab6XWC35=1
 !s100 gz=eh9;<UT3GZUJeWa<N<2
 R9
 32
-R33
+R40
 !i10b 1
-R39
-Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.vhd|
-Z50 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.vhd|
+R41
+Z56 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.vhd|
+Z57 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.vhd|
 !i113 1
 R14
 R15
@@ -358,18 +405,18 @@ R3
 R4
 R5
 DEx4 work 6 memory 0 22 I`fF4B_`od1Fab6XWC35=1
-!i122 106
+!i122 118
 l17
 L14 25
 VK]3baUhaP<=0G^8=nIU[P0
 !s100 aAiUgHk1@U>FmeJkDMW]n0
 R9
 32
-R33
+R40
 !i10b 1
-R39
-R49
-R50
+R41
+R56
+R57
 !i113 1
 R14
 R15
@@ -378,21 +425,21 @@ R16
 R3
 R4
 R5
-!i122 107
+!i122 119
 R6
-Z51 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/pc.vhd
-Z52 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/pc.vhd
+Z58 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/pc.vhd
+Z59 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/pc.vhd
 l0
 L4 1
 VBF?cWm_je3ZVS]aGF4kDS3
 !s100 FDeR_R1za1fK6jaL2VPh71
 R9
 32
-Z53 !s110 1681936880
+R33
 !i10b 1
-Z54 !s108 1681936880.000000
-Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/pc.vhd|
-Z56 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/pc.vhd|
+R34
+Z60 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/pc.vhd|
+Z61 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/pc.vhd|
 !i113 1
 R14
 R15
@@ -401,18 +448,18 @@ R3
 R4
 R5
 DEx4 work 2 pc 0 22 BF?cWm_je3ZVS]aGF4kDS3
-!i122 107
+!i122 119
 l15
 L11 22
 VoLP5[<Y]R3OoH8JG62>YX1
 !s100 Djg^OLH64NV1GFQQhOBo?0
 R9
 32
-R53
+R33
 !i10b 1
-R54
-R55
-R56
+R34
+R60
+R61
 !i113 1
 R14
 R15
@@ -423,7 +470,7 @@ R2
 R3
 R4
 R5
-!i122 108
+!i122 120
 R6
 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/processor.vhd
 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/processor.vhd
@@ -433,36 +480,36 @@ V<zUV:LJo2[3EgLC?NKg^i1
 !s100 WBhKPGe>;dB0Xj:@3IGL33
 R9
 32
-R53
+R33
 !i10b 1
-R54
+R34
 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/processor.vhd|
 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/processor.vhd|
 !i113 1
 R14
 R15
 Eram
-R42
+R49
 R1
 R2
 R3
 R4
 R5
-!i122 109
+!i122 121
 R6
-Z57 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ram.vhd
-Z58 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ram.vhd
+Z62 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ram.vhd
+Z63 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ram.vhd
 l0
 L6 1
 V3_TTBT?oBQ_0mVbbm[@Xo0
 !s100 P0@;4iU[ilmOHz3^J3G7N1
 R9
 32
-R53
+R33
 !i10b 1
-R54
-Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ram.vhd|
-Z60 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ram.vhd|
+R34
+Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ram.vhd|
+Z65 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ram.vhd|
 !i113 1
 R14
 R15
@@ -473,59 +520,59 @@ R3
 R4
 R5
 DEx4 work 3 ram 0 22 3_TTBT?oBQ_0mVbbm[@Xo0
-!i122 109
+!i122 121
 l24
 L20 18
 Vg5nE=Wd:8bGC?5Pza]FD93
 !s100 T4][<g^mj5:afOLz90aD13
 R9
 32
-R53
+R33
 !i10b 1
-R54
-R59
-R60
+R34
+R64
+R65
 !i113 1
 R14
 R15
 Eregfile
-Z61 w1681935271
+Z66 w1681935271
 R4
 R5
-!i122 110
+!i122 122
 R6
-Z62 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/regfile.vhd
-Z63 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/regfile.vhd
+Z67 8D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/regfile.vhd
+Z68 FD:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/regfile.vhd
 l0
 L4 1
 V2`7Bl?C27h:G8Q8Hj:lR>1
 !s100 C=aennWA>RLi93[:Q>hRW2
 R9
 32
-R53
+R33
 !i10b 1
-R54
-Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/regfile.vhd|
-Z65 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/regfile.vhd|
+R34
+Z69 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/regfile.vhd|
+Z70 !s107 D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/regfile.vhd|
 !i113 1
 R14
 R15
 Aregfile_arch1
 R4
 R5
-Z66 DEx4 work 7 regfile 0 22 2`7Bl?C27h:G8Q8Hj:lR>1
-!i122 110
+DEx4 work 7 regfile 0 22 2`7Bl?C27h:G8Q8Hj:lR>1
+!i122 122
 l26
-Z67 L15 19
-Z68 VN6SbOQdCc<1EJ:kM@231_0
-Z69 !s100 5ZD^V0QNonZnA?80Wfhf;2
+L15 19
+VN6SbOQdCc<1EJ:kM@231_0
+!s100 5ZD^V0QNonZnA?80Wfhf;2
 R9
 32
-R53
+R33
 !i10b 1
-R54
-R64
-R65
+R34
+R69
+R70
 !i113 1
 R14
 R15
