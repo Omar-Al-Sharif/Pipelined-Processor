@@ -24,12 +24,12 @@ BEGIN
 	PROCESS (aluOperation, Src1, Src2, resultSignal,aluEnable)
 	BEGIN
 		IF(aluEnable = '1') THEN 
-			IF (aluOperation = "00000") THEN --NOP--
-				aluToMemAddress <= (OTHERS => '0');
-				resultSignal <= x"0000";
-				result <= x"0000";
+			-- IF (aluOperation = "00000") THEN --NOP--
+			-- 	aluToMemAddress <= (OTHERS => '0');
+			-- 	resultSignal <= x"0000";
+			-- 	result <= x"0000";
 
-			ELSIF (aluOperation = "00100") THEN --INC--
+			IF (aluOperation = "00100") THEN --INC--
 				aluToMemAddress <= (OTHERS => '0');
 				resultSignal <= Src1 + 1;
 				result <= Src1 + 1;
@@ -39,10 +39,10 @@ BEGIN
 				resultSignal <= Src1 AND Src2;
 				result <= Src1 AND Src2;
 
-			ELSIF (aluOperation = "01100") THEN --IN-- //need help here
-				aluToMemAddress <= (OTHERS => '0');
-				resultSignal <= (OTHERS => '0'); --this is correct inport value passes by buffers only till it reaches mux --ziad comment
-				result <= x"0000";
+			-- ELSIF (aluOperation = "01100") THEN --IN-- //need help here
+			-- 	aluToMemAddress <= (OTHERS => '0');
+			-- 	resultSignal <= (OTHERS => '0'); --this is correct inport value passes by buffers only till it reaches mux --ziad comment
+			-- 	result <= x"0000";
 
 			ELSIF (aluOperation = "10000") THEN --LDD--
 				aluToMemAddress <= Src1;

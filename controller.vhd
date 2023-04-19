@@ -1,65 +1,64 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-use IEEE.std_logic_unsigned.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+USE IEEE.std_logic_unsigned.ALL;
 
-entity controller is
-port(opcode : in std_logic_vector(4 downto 0);
-	memWrite,memRead,wbEnable,aluEnable,memToReg: out std_logic;
-	aluOperation: out std_logic_vector(4 downto 0)
+ENTITY controller IS
+    PORT (
+        opcode : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+        memWrite, memRead, wbEnable, aluEnable, memToReg : OUT STD_LOGIC;
+        aluOperation : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
 
-);
-end entity;
+    );
+END ENTITY;
 
-architecture controllerFlow of controller is
-begin
+ARCHITECTURE controllerFlow OF controller IS
+BEGIN
     aluOperation <= opcode;
-	process(opcode)
-	begin
-	if (opcode = "00000") then --NOP--
-        memWrite <= '0';
-        memRead  <= '0';
-        wbEnable <= '0';
-        aluEnable<= '0';
-        memToReg <= '0';
-	
-        elsif (opcode = "00100") then --INC--
+    PROCESS (opcode)
+    BEGIN
+        IF (opcode = "00000") THEN --NOP--
             memWrite <= '0';
-            memRead  <= '0';
+            memRead <= '0';
+            wbEnable <= '0';
+            aluEnable <= '0';
+            memToReg <= '0';
+
+        ELSIF (opcode = "00100") THEN --INC--
+            memWrite <= '0';
+            memRead <= '0';
             wbEnable <= '1';
-            aluEnable<= '1';
-            memToReg <= '0'; 
+            aluEnable <= '1';
+            memToReg <= '0';
 
-            elsif (opcode = "01010") then --AND--
-                memWrite <= '0';
-                memRead  <= '0';
-                wbEnable <= '1';
-                aluEnable<= '1';
-                memToReg <= '0';
-  
-                elsif (opcode = "01100") then --IN--
-                    memWrite <= '0';
-                    memRead  <= '0';
-                    wbEnable <= '1';
-                    aluEnable<= '1';
-                    memToReg <= '0';
+        ELSIF (opcode = "01010") THEN --AND--
+            memWrite <= '0';
+            memRead <= '0';
+            wbEnable <= '1';
+            aluEnable <= '1';
+            memToReg <= '0';
 
-                    elsif (opcode = "10000") then --LDD--
-                        memWrite <= '0';
-                        memRead  <= '1';
-                        wbEnable <= '1';
-                        aluEnable<= '1';
-                        memToReg <= '1';
+        ELSIF (opcode = "01100") THEN --IN--
+            memWrite <= '0';
+            memRead <= '0';
+            wbEnable <= '1';
+            aluEnable <= '1';
+            memToReg <= '0';
 
-                        elsif (opcode = "10001") then --STD--
-                            memWrite <= '1';
-                            memRead  <= '0';
-                            wbEnable <= '0';
-                            aluEnable<= '1';
-                            memToReg <= '0';  
-        end if;
-        end process;
+        ELSIF (opcode = "10000") THEN --LDD--
+            memWrite <= '0';
+            memRead <= '1';
+            wbEnable <= '1';
+            aluEnable <= '1';
+            memToReg <= '1';
 
+        ELSIF (opcode = "10001") THEN --STD--
+            memWrite <= '1';
+            memRead <= '0';
+            wbEnable <= '0';
+            aluEnable <= '1';
+            memToReg <= '0';
+        END IF;
+    END PROCESS;
 
-
-end controllerFlow;
+END controllerFlow;
