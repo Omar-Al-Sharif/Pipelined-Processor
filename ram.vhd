@@ -10,8 +10,8 @@ PORT (clk : IN std_logic;
  we : IN std_logic;
  rst : IN std_logic;
 read1_addres, write_adress :in std_logic_vector(15 downto 0);--writ address mlnash d3wa beh
- datain : IN std_logic_vector(15 DOWNTO 0);     --data
- dataout1 : OUT std_logic_vector(15 DOWNTO 0) );--dataout mlansh d3wa beh bardo
+ datain : IN std_logic_vector(31 DOWNTO 0);     --data
+ dataout1 : OUT std_logic_vector(31 DOWNTO 0) );--dataout mlansh d3wa beh bardo
 
 END ENTITY ram;
 
@@ -19,7 +19,7 @@ END ENTITY ram;
 
 ARCHITECTURE sync_ram_a OF ram IS 
 --generic (n: integer := 65536);--2^16
- TYPE ram_type IS ARRAY(0 TO 65536-1) of std_logic_vector(15 DOWNTO 0);--2^16=65536, 16 dah el pc size
+ TYPE ram_type IS ARRAY(0 TO 65536-1) of std_logic_vector(31 DOWNTO 0);--2^16=65536, 16 dah el pc size
  SIGNAL ram : ram_type ;
 BEGIN
 PROCESS(clk) IS 
