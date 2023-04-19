@@ -202,3 +202,91 @@
 # Compile of fallingedgebuff.vhd was successful.
 # Compile of memstage.vhd was successful.
 # 15 compiles, 0 failed with no errors.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd was successful.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# Compile of exstage.vhd was successful.
+# Compile of fallingedgebuff.vhd was successful.
+# Compile of memstage.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 00:19:45 on Apr 20,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.processor(integration)
+# Loading work.ifstage(ifstage)
+# Loading work.pc(archpc)
+# Loading work.instructioncache(instructioncache_arch1)
+# Loading work.ram(sync_ram_a)
+# Loading work.fallingedgebuff(buff_arch)
+# Loading work.idstage(idstage)
+# Loading work.regfile(regfile_arch1)
+# Loading work.axram(axsync_ram_a)
+# Loading work.controller(controllerflow)
+add wave -position end  sim:/processor/clk
+add wave -position end  sim:/processor/rst
+add wave -position end  sim:/processor/fetchedInstruction
+add wave -position end  sim:/processor/ifIdBufferOutput
+add wave -position end  sim:/processor/writeBackEnable
+add wave -position end  sim:/processor/writeBackData
+add wave -position end  sim:/processor/memWrite
+add wave -position end  sim:/processor/memRead
+add wave -position end  sim:/processor/wbEnable
+add wave -position end  sim:/processor/aluEnable
+add wave -position end  sim:/processor/src1
+add wave -position end  sim:/processor/src2
+add wave -position end  sim:/processor/aluOp
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/IF_Stage/cache/fx
+force -freeze sim:/processor/rst 0 0
+force -freeze sim:/processor/clk 1 0, 0 {2 ps} -r 5
+run
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 102 ps  Iteration: 1  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 102 ps  Iteration: 1  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 102 ps  Iteration: 1  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 102 ps  Iteration: 1  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 102 ps  Iteration: 1  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 102 ps  Iteration: 1  Instance: /processor/ID_Stage/controller1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 102 ps  Iteration: 1  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 102 ps  Iteration: 1  Instance: /processor/ID_Stage/regFile1/fx
+run

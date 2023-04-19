@@ -62,7 +62,6 @@ signal aluOp: std_logic_vector(4 downto 0);
 
 begin 
 
-
 IF_Stage: ifstage port map(clk, rst, fetchedInstruction);
 IF_ID_Buffer: fallingedgebuff generic map(32) port map('1', clk, rst, fetchedInstruction, ifIdBufferOutput);
 ID_Stage: idstage port map(clk, rst, writeBackEnable, 
