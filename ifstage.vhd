@@ -37,5 +37,5 @@ BEGIN
 
 programCounter: pc port map('1',clk,rst, counter);
 cache: instructionCache generic map(16) port map(clk, rst, '0', counter, counter, instruction, dummy);
-
+--
 END IFStage; -- arch
