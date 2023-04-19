@@ -6,8 +6,8 @@ entity instructionCache is
 	port (clk, rst: in std_logic; -- rst 7otaha dayman b zero 
         write_en : in std_logic; --7otaha dayman b zero e7na bn read bas
         read1_addres, write_adress :in std_logic_vector(n-1 downto 0);--writ address mlnash d3wa beh da5alo ay signal buff bas ma tsta5dmhosh
-        source1: out std_logic_vector(15 downto 0); --instruction
-        destination: in std_logic_vector(15 downto 0));--dataout mlansh d3wa beh bardo da5alo ay signal buff bas ma tsta5dmhosh
+        source1: out std_logic_vector(31 downto 0); --instruction
+        destination: in std_logic_vector(31 downto 0));--dataout mlansh d3wa beh bardo da5alo ay signal buff bas ma tsta5dmhosh
 
 end entity instructionCache;
 
@@ -19,8 +19,8 @@ architecture instructionCache_arch1 of instructionCache is
 		we : IN std_logic;
 		rst : IN std_logic;
 		read1_addres, write_adress :in std_logic_vector(15 downto 0);--writ address mlnash d3wa beh
-		datain : IN std_logic_vector(15 DOWNTO 0);     --data
-		dataout1 : OUT std_logic_vector(15 DOWNTO 0) );--dataout mlansh d3wa beh bardo
+		datain : IN std_logic_vector(31 DOWNTO 0);     --data
+		dataout1 : OUT std_logic_vector(31 DOWNTO 0) );--dataout mlansh d3wa beh bardo
 	end component;
 
 begin
