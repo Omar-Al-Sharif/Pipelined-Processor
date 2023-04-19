@@ -1,0 +1,76 @@
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of ifstage.vhd failed with 4 errors.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# Compile of registers.vhd failed with 1 errors.
+# 12 compiles, 3 failed with 6 errors.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# 11 compiles, 2 failed with 1 error.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# 11 compiles, 1 failed with 1 error.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd failed with 2 errors.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# 12 compiles, 2 failed with 3 errors.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd failed with 1 errors.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# 12 compiles, 1 failed with 1 error.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd failed with 1 errors.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# 12 compiles, 1 failed with 1 error.
