@@ -1,4 +1,4 @@
-{D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/ifstage.vhd}
+{D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memstage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memstage.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -6,8 +6,16 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Loading package NUMERIC_STD
 -- Loading package std_logic_arith
 -- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity ifstage
--- Compiling architecture IFStage of ifstage
+-- Compiling entity memstage
+-- Compiling architecture MEMStage of memstage
+
+} {} {}} {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/fallingedgebuff.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/fallingedgebuff.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity fallingedgebuff
+-- Compiling architecture buff_arch of fallingedgebuff
 
 } {} {}} {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructioncache.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
@@ -86,7 +94,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity ram
 -- Compiling architecture sync_ram_a of ram
 
-} {} {}} {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/processor.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/processor.vhd}
+} {} {}} {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/exstage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/exstage.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -94,7 +102,8 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Loading package NUMERIC_STD
 -- Loading package std_logic_arith
 -- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity processor
+-- Compiling entity exstage
+-- Compiling architecture EXStage of exstage
 
 } {} {}} {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/idstage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\Omar's Files\CUFE\Spring 23\Computer Architecture\Project\Project\idstage.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020

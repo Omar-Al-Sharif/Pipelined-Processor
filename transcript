@@ -140,3 +140,65 @@
 # Compile of regfile.vhd was successful.
 # Compile of exstage.vhd was successful.
 # 13 compiles, 0 failed with no errors.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd was successful.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# Compile of exstage.vhd was successful.
+# 13 compiles, 0 failed with no errors.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd was successful.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# Compile of exstage.vhd was successful.
+# Compile of fallingedgebuff.vhd was successful.
+# Compile of memstage.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd was successful.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd failed with 4 errors.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# Compile of exstage.vhd was successful.
+# Compile of fallingedgebuff.vhd was successful.
+# Compile of memstage.vhd was successful.
+# 15 compiles, 1 failed with 4 errors.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd was successful.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd was successful.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# Compile of exstage.vhd was successful.
+# Compile of fallingedgebuff.vhd was successful.
+# Compile of memstage.vhd was successful.
+# 15 compiles, 0 failed with no errors.

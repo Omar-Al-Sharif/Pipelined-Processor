@@ -6,7 +6,6 @@ USE IEEE.std_logic_unsigned.ALL;
 ENTITY ifstage IS
     PORT (
         clk, rst : IN STD_LOGIC;
-        read1_addres : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
 END ENTITY ifstage;
