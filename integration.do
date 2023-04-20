@@ -35,7 +35,8 @@ add wave -position 36  sim:/processor/wbEnableIdExBuffOut
 add wave -position 37  sim:/processor/aluOpIdExBuffOut
 add wave -position 38  sim:/processor/aluResultExMemBuffOut
 add wave -position 39  sim:/processor/aluAddressExMemBuffOut
-add wave -position 40  sim:/processor/inPortExMemBuffOut
+# add wave -position 40  sim:/processor/inPortExMemBuffOut
+add wave -position 40  sim:/processor/flagsOut
 add wave -position 41  sim:/processor/destExMemBuffOut
 add wave -position 42  sim:/processor/memReadExMemBuffOut
 add wave -position 43  sim:/processor/memWriteExMemBuffOut

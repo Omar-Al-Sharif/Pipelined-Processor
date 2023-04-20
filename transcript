@@ -2269,3 +2269,143 @@ run
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 282 ps  Iteration: 1  Instance: /processor/ID_Stage/regFile1/fx
 run
+do integration.do
+# End time: 08:34:43 on Apr 20,2023, Elapsed time: 0:12:24
+# Errors: 0, Warnings: 21
+# vsim -gui work.processor 
+# Start time: 08:34:43 on Apr 20,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.processor(integration)
+# Loading work.ifstage(ifstage)
+# Loading work.pc(archpc)
+# Loading work.instructioncache(instructioncache_arch1)
+# Loading work.ram(sync_ram_a)
+# Loading work.buff(buff_arch)
+# Loading work.idstage(idstage)
+# Loading work.regfile(regfile_arch1)
+# Loading work.axram(axsync_ram_a)
+# Loading work.controller(controllerflow)
+# Loading work.exstage(exstage)
+# Loading work.alu(aluflow)
+# Loading work.memstage(memstage)
+# Loading work.memory(archofmemory)
+# Loading work.wbstage(wbstage)
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/IF_Stage/cache/fx
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 110 ps  Iteration: 2  Instance: /processor/EX_Stage/alu1
+run
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 282 ps  Iteration: 1  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 282 ps  Iteration: 1  Instance: /processor/ID_Stage/regFile1/fx
+run
+add wave -position 40  sim:/processor/flagsOut
+do integration.do
+# End time: 08:41:59 on Apr 20,2023, Elapsed time: 0:07:16
+# Errors: 0, Warnings: 21
+# vsim -gui work.processor 
+# Start time: 08:41:59 on Apr 20,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.processor(integration)
+# Loading work.ifstage(ifstage)
+# Loading work.pc(archpc)
+# Loading work.instructioncache(instructioncache_arch1)
+# Loading work.ram(sync_ram_a)
+# Loading work.buff(buff_arch)
+# Loading work.idstage(idstage)
+# Loading work.regfile(regfile_arch1)
+# Loading work.axram(axsync_ram_a)
+# Loading work.controller(controllerflow)
+# Loading work.exstage(exstage)
+# Loading work.alu(aluflow)
+# Loading work.memstage(memstage)
+# Loading work.memory(archofmemory)
+# Loading work.wbstage(wbstage)
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/controller1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/IF_Stage/cache/fx
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 110 ps  Iteration: 2  Instance: /processor/EX_Stage/alu1
+run
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/controller1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 275 ps  Iteration: 2  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 282 ps  Iteration: 1  Instance: /processor/ID_Stage/regFile1/fx
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 282 ps  Iteration: 1  Instance: /processor/ID_Stage/regFile1/fx
+run
+run
+# End time: 08:51:59 on Apr 20,2023, Elapsed time: 0:10:00
+# Errors: 0, Warnings: 21
