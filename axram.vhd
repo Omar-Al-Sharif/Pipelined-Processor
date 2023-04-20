@@ -23,10 +23,10 @@ ARCHITECTURE axsync_ram_a OF axram IS
 BEGIN
 PROCESS(clk) IS 
 BEGIN
- IF rising_edge(clk) THEN 
+ IF falling_edge(clk) THEN 
  IF (we = '1' and rst='0') THEN 
  ram(to_integer(unsigned((write_adress)))) <= datain;
- ELSIF  ( we = '1' and rst='1' )THEN
+ ELSIF  (rst='1' )THEN
  ram <= (others => (others => '0'));
  
  END IF;

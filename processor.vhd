@@ -108,26 +108,62 @@ signal m2WbBufferOutput: std_logic_vector(36 downto 0);
 signal writeBackAddress: std_logic_vector(2 downto 0);
 
 
+-- Intermediate signals:
+
+-- id if buff:
+signal opCodeIfIDBuffOut: std_logic_vector(4 downto 0);
+signal destIfIDBuffOut, src1IfIDBuffOut, src2IfIDBuffOut : std_logic_vector(2 downto 0);
+signal immIfIDBuffOut, inPortIfIDBuffOut: std_logic_vector(15 downto 0);
+
+-- id ex buff:
+signal src1IdExBuffOut, src2IdExBuffOut, inPortIdExBuffOut : std_logic_vector(15 downto 0);
+signal destIdExBuffOut: std_logic_vector(2 downto 0);
+signal memReadIdExBuffOut, memWriteIdExBuffOut, aluEnableIdExBuffOut, inportControlIdExBuffOut, wbEnableIdExBuffOut: std_logic;
+signal aluOpIdExBuffOut: std_logic_vector(4 downto 0);
+
+-- ex mem buff:
+signal aluResultExMemBuffOut, aluAddressExMemBuffOut, inPortExMemBuffOut : std_logic_vector(15 downto 0);
+signal destExMemBuffOut: std_logic_vector(2 downto 0);
+signal memReadExMemBuffOut, memWriteExMemBuffOut, inportControlExMemBuffOut, wbEnableExMemBuffOut: std_logic;
+
+
+-- mem wb buff:
+signal wbDataMemWbBuffOut, inPortMemWbBuffOut: std_logic_vector(15 downto 0); 
+signal inportControlMemWbBuffOut, wbEnableMemWbBuffOut : std_logic;
+
 begin 
 
 IF_Stage: ifstage port map(clk, rst, fetchedInstruction);
-ifIdBufferInput <=  (fetchedInstruction & inport);
+ifIdBufferInput <=  (inport & fetchedInstruction );
 IF_ID_Buffer: buff generic map(48) port map('1', clk, rst, ifIdBufferInput , ifIdBufferOutput);
-ID_Stage: idstage port map(clk, rst, writeBackEnable, 
-ifIdBufferOutput(23 downto 21),
-ifIdBufferOutput(20 downto 18),
-writeBackAddress,
-writeBackData,
-ifIdBufferOutput(31 downto 27),
+
+opCodeIfIDBuffOut <= ifIdBufferOutput(31 downto 27);
+destIfIDBuffOut <= ifIdBufferOutput (26 downto 24);
+src1IfIDBuffOut <= ifIdBufferOutput (23 downto 21);
+src2IfIDBuffOut <= ifIdBufferOutput (20 downto 18);
+
+ID_Stage: idstage port map(clk, rst, wbEnableMemWbBuffOut, 
+src1IfIDBuffOut, src2IfIDBuffOut, writeBackAddress, writeBackData, opCodeIfIDBuffOut,
 memWrite, memRead, wbEnable, aluEnable, inportControl, src1, src2, aluOp);
---                                      60-58          57             56-41  40-25  24-20    19         18          17          16     15-0
-idExBufferInput <= (ifIdBufferOutput(26 downto 24) & inportControl & src1 & src2 & aluOp & aluEnable & memWrite & memRead & wbEnable & inport);
+
+
+
+--                     60-58          57             56-41  40-25  24-20    19         18          17          16     15-0
+idExBufferInput <= (destIfIDBuffOut & inportControl & src1 & src2 & aluOp & aluEnable & memWrite & memRead & wbEnable & inport);
 ID_EX_Buffer: buff generic map(61) port map('1', clk, rst, idExBufferInput, idExBufferOutput);
-EX_Stage: exstage port map(
-idExBufferOutput(56 downto 41),
-idExBufferOutput (40 downto 25),
-idExBufferOutput (24 downto 20),
-idExBufferOutput(19), zeroFlag, negativeFlag, carryFlag, aluAddress ,aluResult);
+
+destIdExBuffOut <= idExBufferOutput(60 downto 58);
+inportControlIdExBuffOut <= idExBufferOutput(57);
+src1IdExBuffOut <= idExBufferOutput(56 downto 41);
+src2IdExBuffOut <= idExBufferOutput(40 downto 25);
+aluOpIdExBuffOut <= idExBufferOutput(24 downto 20);
+aluEnableIdExBuffOut <= idExBufferOutput(19);
+memWriteIdExBuffOut <= idExBufferOutput(18);
+memReadIdExBuffOut <= idExBufferOutput(17);
+wbEnableIdExBuffOut <= idExBufferOutput (16);
+inportIdExBuffOut <= idExBufferOutput(15 downto 0);
+
+EX_Stage: exstage port map(src1IdExBuffOut,src2IdExBuffOut,aluOpIdExBuffOut, aluEnableIdExBuffOut, zeroFlag, negativeFlag, carryFlag, aluAddress ,aluResult);
 
 flagsIn <= (zeroFlag, negativeFlag, carryFlag);
 Flags: buff generic map(3) port map('1', clk, rst, flagsIn, flagsOut);
@@ -136,24 +172,41 @@ Flags: buff generic map(3) port map('1', clk, rst, flagsIn, flagsOut);
 -- exMemBufferInput <= (dest &aluResult & aluAddress & memWrite & memRead & wbEnable & inportControl & inport);
 
 -- sizes:              3                             16             16                 1          +       1                  +       1                 
-exMemBufferInput <= (idExBufferOutput(60 downto 58) & aluResult & aluAddress  & idExBufferOutput(18) & idExBufferOutput(17) & idExBufferOutput(16) 
-& idExBufferOutput(57) & idExBufferOutput(15 downto 0));
+exMemBufferInput <= (destIdExBuffOut & aluResult & aluAddress  & memWriteIdExBuffOut & memReadIdExBuffOut & wbEnableIdExBuffOut & inportControlIdExBuffOut & inportIdExBuffOut);
 EX_Mem_Buffer: buff generic map(55) port map('1', clk, rst, exMemBufferInput, exMemBufferOutput);
 
-Mem_Stage: memstage port map(clk, exMemBufferOutput(18), exMemBufferOutput(17), exMemBufferOutput(38 downto 23),
- exMemBufferOutput(54 downto 39),
+destExMemBuffOut <= exMemBufferOutput(54 downto 52);
+aluResultExMemBuffOut <= exMemBufferOutput(51 downto 36);
+aluAddressExMemBuffOut <= exMemBufferOutput(35 downto 20);
+memWriteExMemBuffOut <= exMemBufferOutput(19);
+memReadExMemBuffOut <= exMemBufferOutput(18);
+wbEnableExMemBuffOut <= exMemBufferOutput(17);
+inportControlExMemBuffOut <= exMemBufferOutput(16);
+inportExMemBuffOut <= exMemBufferOutput(15 downto 0);
+
+
+Mem_Stage: memstage port map(clk, memWriteExMemBuffOut, memReadExMemBuffOut, aluAddressExMemBuffOut,
+ aluResultExMemBuffOut,
  memReadData);
---      sizes                         3                     16             1                         1                          16             =   37
---                                 36-34: dest           33-18          wbEnable  17           input control  16                  input port 15:0
-m1M2BufferInput <= (exMemBufferOutput(54 downto 52) & memReadData & exMemBufferOutput(17) & exMemBufferOutput(16) & exMemBufferOutput(15 downto 0) ); 
+-- Might be a problem in the output
+
+--      sizes                3                16             1                         1                          16             =   37
+--                      36-34: dest       33-18          wbEnable  17           input control  16                  input port 15:0
+m1M2BufferInput <= (destExMemBuffOut & memReadData & wbEnableExMemBuffOut & inportControlExMemBuffOut & inportExMemBuffOut ); 
 M1_M2_Buffer: buff generic map(37) port map('1', clk, rst, m1M2BufferInput, m1M2BufferOutput);
 
 M2_WB_Buffer: buff generic map(37) port map('1',clk,rst, m1M2BufferOutput, m2WbBufferOutput);
-writeBackEnable <= m2WbBufferOutput(17);
+wbEnableMemWbBuffOut <= m2WbBufferOutput(17);
+
+-- writeBackEnable <= m2WbBufferOutput(17);
 
 -- writeBackData <= m2WbBufferOutput(33 downto 18);
 writeBackAddress <= m2WbBufferOutput (36 downto 34);
 
-WB_Stage: wbstage port map (m2WbBufferOutput(33 downto 18), m2WbBufferOutput(15 downto 0), m2WbBufferOutput(16), writeBackData);
+wbDataMemWbBuffOut <= m2WbBufferOutput(33 downto 18);
+inPortMemWbBuffOut <= m2WbBufferOutput(15 downto 0);
+inportControlMemWbBuffOut <= m2WbBufferOutput(16);
+
+WB_Stage: wbstage port map (wbDataMemWbBuffOut, inPortMemWbBuffOut, inportControlMemWbBuffOut, writeBackData);
 
 end integration;
