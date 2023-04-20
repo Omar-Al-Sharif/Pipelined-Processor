@@ -684,3 +684,44 @@ do integration.do
 #    Time: 0 ps  Iteration: 0  Instance: /processor/ID_Stage/regFile1/fx
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /processor/IF_Stage/cache/fx
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd was successful.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# Compile of exstage.vhd was successful.
+# Compile of fallingedgebuff.vhd was successful.
+# Compile of memstage.vhd was successful.
+# 15 compiles, 1 failed with 1 error.
+# Compile of alu.vhd was successful.
+# Compile of axram.vhd was successful.
+# Compile of buffer.vhd was successful.
+# Compile of controller.vhd was successful.
+# Compile of idstage.vhd was successful.
+# Compile of ifstage.vhd was successful.
+# Compile of instructioncache.vhd was successful.
+# Compile of memory.vhd was successful.
+# Compile of pc.vhd was successful.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of ram.vhd was successful.
+# Compile of regfile.vhd was successful.
+# Compile of exstage.vhd was successful.
+# Compile of fallingedgebuff.vhd was successful.
+# Compile of memstage.vhd was successful.
+# 15 compiles, 1 failed with 1 error.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of processor.vhd was successful.
+# Compile of processor.vhd failed with 1 errors.
+# Compile of processor.vhd was successful.
+# Compile of processor.vhd was successful.
