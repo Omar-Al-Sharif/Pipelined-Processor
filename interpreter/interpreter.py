@@ -9,6 +9,19 @@ def process_line(line):
     result = re.split(r'[,\s]+', line)
     return result
 
+def hex_to_bin(hexdec):
+    # Initialize an empty string to store the binary value
+    binary = ""
+    # Iterate over each character in the hexadecimal string
+    for _hex in hexdec:
+        # Convert the hexadecimal character to a decimal value
+        dec = int(_hex, 16)
+        # Convert the decimal value to binary and remove the '0b' prefix
+        # Pad the binary value with zeros if needed to reach 4 bits
+        binary += bin(dec)[2:].rjust(4,"0")
+    # Pad the binary value with zeros if needed to reach 16 bits
+    return binary.zfill(16)
+
 def line_to_command(line):
     
     opcode = '00000_'
@@ -63,14 +76,14 @@ def line_to_command(line):
     elif line[0] == 'LDM': 
         opcode = opcode_dict[line[0]] 
         dest = register_dict[line[1]]
-        imm_Value = line[2] 
+        imm_Value = hex_to_bin(line[2])
     
     #ldm has OPCODE AND dest and src1 and immediate only 
     elif line[0] == 'IADD ': 
         opcode = opcode_dict[line[0]] 
         dest = register_dict[line[1]]
         src1 = register_dict[line[2]]
-        imm_Value = line[3]
+        imm_Value = hex_to_bin(line[3])
         
     #RTI AND RET AND NOP AND SETC AND CLRC HAVE OPCODE ONLY
     elif line[0] == 'RTI' or line[0] == 'RET' or line[0] == 'NOP' or line[0] == 'SETC' or line[0] == 'CLRC':
@@ -115,6 +128,7 @@ def work():
         
 if __name__ == '__main__':
     work()
+    #print(hex_to_bin('a1'))
     #print(process_line('inc ax, bx, cx'))
     #print(line_to_command( ['PUSH', 'R1']  ))
     #print(line_to_command( ['OUT', 'R7']  ))
