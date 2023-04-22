@@ -128,6 +128,13 @@ def work():
             counter +=1
             print(result)
         
+        val = counter
+        for x in range(2**16-val):
+            result = process_line('NOP')
+            result = line_to_command(result, hex(counter)[2:])
+            out.write(''.join(result) + '\n')
+            counter +=1
+            
 if __name__ == '__main__':
     work()
     #print(hex_to_bin('a1'))
