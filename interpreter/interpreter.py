@@ -22,7 +22,7 @@ def hex_to_bin(hexdec):
     # Pad the binary value with zeros if needed to reach 16 bits
     return binary.zfill(16)
 
-def line_to_command(line):
+def line_to_command(line, counter):
     
     opcode = '00000_'
     dest = '000_'
@@ -115,15 +115,17 @@ def line_to_command(line):
     else:
         print('instruction transalation error')
         
-    return opcode + dest + src1 + src2 + imm_Value + uselessbits
+    return str(counter) + ": " + opcode + dest + src1 + src2 + imm_Value + uselessbits
     
     
 def work():
     with open('D:\\projects\\Pipelined-Processor\\interpreter\\file.txt') as f, open('D:\\projects\\Pipelined-Processor\\interpreter\\anotherfile.txt', 'w') as out:
+        counter = 0
         for line in f:
             result = process_line(line)
-            result = line_to_command(result)
+            result = line_to_command(result, hex(counter)[2:])
             out.write(''.join(result) + '\n')
+            counter +=1
             print(result)
         
 if __name__ == '__main__':
