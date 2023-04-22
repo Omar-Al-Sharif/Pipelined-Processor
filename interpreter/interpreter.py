@@ -76,14 +76,14 @@ def line_to_command(line):
     elif line[0] == 'LDM': 
         opcode = opcode_dict[line[0]] 
         dest = register_dict[line[1]]
-        imm_Value = hex_to_bin(line[2])
+        imm_Value = hex_to_bin(line[2]) + '_'
     
     #ldm has OPCODE AND dest and src1 and immediate only 
     elif line[0] == 'IADD ': 
         opcode = opcode_dict[line[0]] 
         dest = register_dict[line[1]]
         src1 = register_dict[line[2]]
-        imm_Value = hex_to_bin(line[3])
+        imm_Value = hex_to_bin(line[3]) + '_'
         
     #RTI AND RET AND NOP AND SETC AND CLRC HAVE OPCODE ONLY
     elif line[0] == 'RTI' or line[0] == 'RET' or line[0] == 'NOP' or line[0] == 'SETC' or line[0] == 'CLRC':
