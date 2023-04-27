@@ -118,15 +118,24 @@ def line_to_command(line, counter):
     return str(counter) + ": " + opcode + dest + src1 + src2 + imm_Value + uselessbits
     
     
-def work():
-    with open('D:\\projects\\Pipelined-Processor\\interpreter\\file.txt') as f, open('D:\\projects\\Pipelined-Processor\\interpreter\\anotherfile.txt', 'w') as out:
+def work(inputfile, outputfile):
+    with open(inputfile) as f, open(outputfile, 'w') as out:
         counter = 0
         for line in f:
             result = process_line(line)
-            result = line_to_command(result, hex(counter)[2:])
-            out.write(''.join(result) + '\n')
-            counter +=1
-            print(result)
+            
+            if result[0].lower() == '.org': 
+                val = int(result[1]) ## org decimal or hexadecimal???
+                for x in range(val-counter):
+                    result = process_line('NOP')
+                    result = line_to_command(result, hex(counter)[2:])
+                    out.write(''.join(result) + '\n')
+                    counter +=1
+            else:    
+                result = line_to_command(result, hex(counter)[2:])
+                out.write(''.join(result) + '\n')
+                counter +=1
+                print(result)
         
         val = counter
         for x in range(2**16-val):
@@ -136,7 +145,10 @@ def work():
             counter +=1
             
 if __name__ == '__main__':
-    work()
+    work('D:\\projects\\Pipelined-Processor\\interpreter\\file.txt', 
+         'D:\\projects\\Pipelined-Processor\\interpreter\\anotherfile.txt')
+    work('D:\\projects\\Pipelined-Processor\\interpreter\\orgtest.txt', 
+         'D:\\projects\\Pipelined-Processor\\interpreter\\orgtestoutput.txt')
     #print(hex_to_bin('a1'))
     #print(process_line('inc ax, bx, cx'))
     #print(line_to_command( ['PUSH', 'R1']  ))
