@@ -125,9 +125,8 @@ def line_to_command(line, counter):
     return str(counter) + ": " + opcode + dest + src1 + src2 + imm_Value + uselessbits
     
     
-def work(inputfile, outputfile, memfile):
+def work(inputfile, outputfile):
     instruction_write_dict = {}
-    mem_write_dict = {}
     
     with open(inputfile) as f, open(outputfile, 'w') as out:
         counter = 0
@@ -139,7 +138,8 @@ def work(inputfile, outputfile, memfile):
             #print('result', result)
             
             if ( result[0].isdigit() or all(c in '0123456789abcdefABCDEF' for c in result[0]) ):
-                mem_write_dict[counter] =  hex_to_bin( result[0] ) 
+                instruction_write_dict[counter] =  str(hex(counter)[2:]) + ": " + '00000_' + '000_' + '000_' + '000_' + hex_to_bin( result[0] ) + '_00'
+                counter +=1
                 
             elif result[0].lower() == '.org': 
                 counter = int(result[1], 16)
@@ -162,24 +162,18 @@ def work(inputfile, outputfile, memfile):
                 result = line_to_command(result, hex(x)[2:])
                 out.write(''.join(result) + '\n')
                 
-                
-    with open(memfile, 'w') as out:    
-        for x in range(2**10):
-            if x in mem_write_dict.keys():
-                out.write(''.join(hex(x)[2:] + ': ' + str(mem_write_dict[x])) + '\n')
-            else: 
-                out.write(''.join(hex(x)[2:] + ': 0000000000000000') + '\n')    
+                    
 
             
 if __name__ == '__main__':
     work('D:\\projects\\Pipelined-Processor\\interpreter\\file.txt', 
-         'D:\\projects\\Pipelined-Processor\\interpreter\\anotherfile.txt', 'D:\\projects\\Pipelined-Processor\\interpreter\\placeholdermem.txt')
+         'D:\\projects\\Pipelined-Processor\\interpreter\\anotherfile.txt')
     print('done')
     work('D:\\projects\\Pipelined-Processor\\interpreter\\orgtest.txt', 
-         'D:\\projects\\Pipelined-Processor\\interpreter\\orgtestoutput.txt', 'D:\\projects\\Pipelined-Processor\\interpreter\\placeholdermem.txt')
+         'D:\\projects\\Pipelined-Processor\\interpreter\\orgtestoutput.txt')
     print('done')
     work('D:\\projects\\Pipelined-Processor\\interpreter\\codepart2.txt', 
-         'D:\\projects\\Pipelined-Processor\\interpreter\\codepart2translation.txt', 'D:\\projects\\Pipelined-Processor\\interpreter\\codepart2mem.txt')
+         'D:\\projects\\Pipelined-Processor\\interpreter\\codepart2translation.txt')
     print('done')
     
     #testing funcs
