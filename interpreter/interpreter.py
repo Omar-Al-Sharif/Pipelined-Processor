@@ -127,7 +127,7 @@ def line_to_command(line, counter):
     
 def work(inputfile, outputfile, memfile):
     instruction_write_dict = {}
-    mem_write_dict = []
+    mem_write_dict = {}
     
     with open(inputfile) as f, open(outputfile, 'w') as out:
         counter = 0
@@ -139,7 +139,7 @@ def work(inputfile, outputfile, memfile):
             #print('result', result)
             
             if ( result[0].isdigit() or all(c in '0123456789abcdefABCDEF' for c in result[0]) ):
-                mem_write_dict.append( hex_to_bin( result[0] ) )
+                mem_write_dict[counter] =  hex_to_bin( result[0] ) 
             elif result[0].lower() == '.org': 
                 counter = int(result[1])
             else:    
@@ -163,7 +163,7 @@ def work(inputfile, outputfile, memfile):
                 
     with open(memfile, 'w') as out:    
         for x in range(2**16):
-            if x < len(mem_write_dict):
+            if x in mem_write_dict.keys():
                 out.write(''.join(hex(x)[2:] + ': ' + str(mem_write_dict[x])) + '\n')
             else: 
                 out.write(''.join(hex(x)[2:] + ': 0000000000000000') + '\n')    
