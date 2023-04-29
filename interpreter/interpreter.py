@@ -6,7 +6,7 @@ def process_line(line):
     string = re.sub(r'#.*', '', line)
 
     # Split by space or comma
-    result = re.split(r'[,\s]+', line)
+    result = re.split(r'[,\s]+', string)
     return result
 
 def hex_to_bin(hexdec):
@@ -94,13 +94,13 @@ def line_to_command(line, counter):
         src1 = register_dict[line[1]]
         src2 = register_dict[line[2]]
         
-    #IN AND JMP AND CALL AND JC AND JZ AND POP HAVE OPCODE AND DEST ONLY
-    elif line[0] == 'IN' or line[0] == 'JMP' or line[0] == 'CALL' or line[0] == 'JC' or line[0] == 'JZ' or line[0] == 'POP':
+    #IN AND JMP AND INC AND CALL AND JC AND JZ AND POP HAVE OPCODE AND DEST ONLY
+    elif line[0] == 'IN' or line[0] == 'JMP' or line[0] == 'INC' or line[0] == 'CALL' or line[0] == 'JC' or line[0] == 'JZ' or line[0] == 'POP':
         opcode = opcode_dict[line[0]]
         dest = register_dict[line[1]]
         
-    #NOT AND INC AND DEC AND MOV AND LDD HAVE OPCODE AND DEST AND SRC1 ONLY
-    elif line[0] == 'NOT' or line[0] == 'INC' or line[0] == 'DEC' or line[0] == 'MOV' or line[0] == 'LDD':
+    #NOT AND DEC AND MOV AND LDD HAVE OPCODE AND DEST AND SRC1 ONLY
+    elif line[0] == 'NOT' or line[0] == 'DEC' or line[0] == 'MOV' or line[0] == 'LDD':
         opcode = opcode_dict[line[0]]
         dest = register_dict[line[1]]
         src1 = register_dict[line[2]]
@@ -122,10 +122,12 @@ def work(inputfile, outputfile):
     with open(inputfile) as f, open(outputfile, 'w') as out:
         counter = 0
         for line in f:
+            
+            if len(line.strip()) == 0 or line.strip()[0] == '#' : continue
             result = process_line(line)
             
             if result[0].lower() == '.org': 
-                val = int(result[1]) ## org decimal or hexadecimal???
+                val = int(result[1], base=16) ## change hexadecimal val of org to int for processing
                 for x in range(val-counter):
                     result = process_line('NOP')
                     result = line_to_command(result, hex(counter)[2:])
@@ -149,6 +151,8 @@ if __name__ == '__main__':
          'D:\\projects\\Pipelined-Processor\\interpreter\\anotherfile.txt')
     work('D:\\projects\\Pipelined-Processor\\interpreter\\orgtest.txt', 
          'D:\\projects\\Pipelined-Processor\\interpreter\\orgtestoutput.txt')
+    work('D:\\projects\\Pipelined-Processor\\interpreter\\codepart2.txt', 
+         'D:\\projects\\Pipelined-Processor\\interpreter\\codepart2translation.txt')
     #print(hex_to_bin('a1'))
     #print(process_line('inc ax, bx, cx'))
     #print(line_to_command( ['PUSH', 'R1']  ))
