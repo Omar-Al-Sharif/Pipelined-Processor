@@ -164,7 +164,7 @@ def work(inputfile, outputfile, memfile):
                 
                 
     with open(memfile, 'w') as out:    
-        for x in range(2**16):
+        for x in range(2**10):
             if x in mem_write_dict.keys():
                 out.write(''.join(hex(x)[2:] + ': ' + str(mem_write_dict[x])) + '\n')
             else: 
