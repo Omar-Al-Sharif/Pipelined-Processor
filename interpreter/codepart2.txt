@@ -17,13 +17,13 @@
 .org 20
 SETC						# this instruction should be at address 20h
 NOT R1,R2					# this instruction should be at address 21h
-INC R2,R3					# this instruction should be at address 22h
+INC R2,R3					# this instruction should be at address 22h 
 IADD R3,R2,100 				# this instruction should be at address 23h & 24h, 100 is hex format (256 decimal)
 RTI							# this instruction should be at address 25h
 
 .org 100
 IN R1						# this instruction should be at address 100h
-INC R1						# this instruction should be at address 101h
+INC R1						# this instruction should be at address 101h #############???????????????????????????????????????????????
 PUSH R1						# this instruction should be at address 102h
 POP R2						# this instruction should be at address 103h
 LDM R3, 30					# this instruction should be at address 104h & 105h, 30 is 30h 
@@ -31,5 +31,5 @@ JMP  R3						# this instruction should be at address 106h
 
 
 .org 30
-NOT  R4						# this instruction should be at address 30H 
+NOT  R4					# this instruction should be at address 30H ############????????????????????????????????????????????????????? changed r4 to r4,r4 to test for now
  
