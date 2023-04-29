@@ -162,13 +162,12 @@ def work(inputfile, outputfile, memfile):
                 
                 
     with open(memfile, 'w') as out:    
-        if len(mem_write_dict) != 0:
-            for x in range(2**16):
-                if x < len(mem_write_dict):
-                    out.write(''.join(hex(x)[2:] + ': ' + str(mem_write_dict[x])) + '\n')
-                else: 
-                    out.write(''.join(hex(x)[2:] + ': 0000000000000000') + '\n')    
-        else: print('use empty mem file')
+        for x in range(2**16):
+            if x < len(mem_write_dict):
+                out.write(''.join(hex(x)[2:] + ': ' + str(mem_write_dict[x])) + '\n')
+            else: 
+                out.write(''.join(hex(x)[2:] + ': 0000000000000000') + '\n')    
+
             
 if __name__ == '__main__':
     work('D:\\projects\\Pipelined-Processor\\interpreter\\file.txt', 
