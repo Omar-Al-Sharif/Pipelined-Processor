@@ -140,8 +140,10 @@ def work(inputfile, outputfile, memfile):
             
             if ( result[0].isdigit() or all(c in '0123456789abcdefABCDEF' for c in result[0]) ):
                 mem_write_dict[counter] =  hex_to_bin( result[0] ) 
+                
             elif result[0].lower() == '.org': 
-                counter = int(result[1])
+                counter = int(result[1], 16)
+                
             else:    
                 result = line_to_command(result, hex(counter)[2:])
                 instruction_write_dict[counter] = result
