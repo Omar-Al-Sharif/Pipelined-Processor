@@ -148,9 +148,9 @@ def work(inputfile, outputfile, memfile):
                 counter +=1
                 
         
-        print('dict printing')
-        for key,val in instruction_write_dict.items():
-            print( key,val)
+        # print('dict printing')
+        # for key,val in instruction_write_dict.items():
+        #     print( key,val)
                 
         for x in range(2**16):
             if x in instruction_write_dict.keys():
