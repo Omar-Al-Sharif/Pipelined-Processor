@@ -1,6 +1,8 @@
 vsim -gui work.processor
-mem load -i {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructions.mem} /processor/IF_Stage/cache/fx/ram
-mem load -i {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.mem} /processor/Mem_Stage/mem/ram
+#mem load -i {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/instructions.mem} /processor/IF_Stage/cache/fx/ram
+mem load -i {D:/arch/project/Pipelined-Processor/instructions copy.mem} /processor/IF_Stage/cache/fx/ram
+#mem load -i {D:/Omar's Files/CUFE/Spring 23/Computer Architecture/Project/Project/memory.mem} /processor/Mem_Stage/mem/ram
+mem load -i D:/arch/project/Pipelined-Processor/memory.mem /processor/Mem_Stage/mem/ram
 add wave -position end  sim:/processor/clk
 add wave -position end  sim:/processor/rst
 add wave -position end  sim:/processor/fetchedInstruction
@@ -49,12 +51,14 @@ add wave -position 21 sim:/processor/ID_Stage/regFile1/fx/ram
 add wave -position end sim:/processor/ID_Stage/controller1/*
 add wave -position end sim:/processor/ID_Stage/regFile1/write_adress
 add wave -position end  sim:/processor/writeBackAddress
-force -freeze sim:/processor/inPort 1111111111111110 0
+force -freeze sim:/processor/inPort FFFE 0
 force -freeze sim:/processor/clk 1 0, 0 {2 ps} -r 5
 force -freeze sim:/processor/rst 1 0
 run
-force -freeze sim:/processor/rst 0 0
-force -freeze sim:/processor/inPort 0000000000000001 40
-force -freeze sim:/processor/inPort 0000000000001111 50
-force -freeze sim:/processor/inPort 0000000011001000 60
-run
+force -freeze sim:/processor/rst 0 0 
+force -freeze sim:/processor/inPort 0001 35
+force -freeze sim:/processor/inPort 000F 40
+force -freeze sim:/processor/inPort 00C8 45
+force -freeze sim:/processor/inPort 001F 50
+force -freeze sim:/processor/inPort 00FC 55
+
