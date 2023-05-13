@@ -7,7 +7,7 @@ ENTITY memory IS
     PORT (
         clk : IN STD_LOGIC;
         memWrite, memRead : IN STD_LOGIC; -- read and write enables
-        address, value : IN STD_LOGIC_VECTOR(15 DOWNTO 0); --  adress = location for loading or location for storing in mem, value = value to be stored
+        address, value : IN STD_LOGIC_VECTOR(15 DOWNTO 0); -- address = location for loading or location for storing in mem, value = value to be stored
         dataout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)); -- data out from this block
 END ENTITY memory;
 
@@ -18,21 +18,17 @@ BEGIN
     PROCESS (clk) IS
     BEGIN
         IF rising_edge(clk) THEN
-            IF ((memRead = '1' OR memWrite = '1') AND address >= 1024) THEN -- added out of bounds check for memory
-                dataout <= (OTHERS => '0');
-
-            ELSIF (memWrite = '1') THEN --store
+            IF (memWrite = '1') THEN --store
                 ram(to_integer(unsigned((address)))) <= value; --put value inside mem location
-                dataout <= (OTHERS => '0');
-
-            ELSIF (memRead = '1') THEN --load
-                dataout <= ram(to_integer(unsigned((address)))); --output contents of mem location 
-
-            ELSE
-                dataout <= value;
 
             END IF;
 
         END IF;
     END PROCESS;
+
+    dataout <= (OTHERS => '0') when (clk = '1'and (memRead = '1' OR memWrite = '1') AND address >= 1024) OR memWrite = '1' else
+        ram(to_integer(unsigned((address)))) WHEN clk = '1' and memRead = '1' AND memWrite = '0' else
+        value  WHEN clk = '1' and memRead = '0' AND memWrite = '0' ; --output contents of mem location 
+        --latching on purpose here
+        
 END archOfMemory;
