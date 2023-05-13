@@ -51,8 +51,8 @@ def line_to_command(line, counter):
                 'PUSH' : '01110_',
                 'POP' : '01111_',
                 'LDM' : '10000_',
-                'LDD' : '10001_',
-                'STD' : '10010_',
+                'LDD' : '10000_',
+                'STD' : '10001_',
                 'JZ' : '10011_',
                 'JC' : '10100_',
                 'JMP' : '10101_',
@@ -94,8 +94,8 @@ def line_to_command(line, counter):
     #STD HAS OPCODE AND SRC1 AND SRC2 ONLY
     elif line[0] == 'STD':
         opcode = opcode_dict[line[0]]
-        src1 = register_dict[line[1]]
-        src2 = register_dict[line[2]]
+        src2 = register_dict[line[1]]
+        src1 = register_dict[line[2]]
         
     #IN AND JMP AND INC AND CALL AND JC AND JZ AND POP HAVE OPCODE AND DEST ONLY
     elif line[0] == 'IN' or line[0] == 'JMP'  or line[0] == 'CALL' or line[0] == 'JC' or line[0] == 'JZ' or line[0] == 'POP':
@@ -129,6 +129,11 @@ def work(inputfile, outputfile):
     instruction_write_dict = {}
     
     with open(inputfile) as f, open(outputfile, 'w') as out:
+        out.write('// memory data file (do not edit the following line - required for mem load use)\n')
+        out.write('// instance=/instructioncache/fx/ram\n')
+        out.write('// format=mti addressradix=h dataradix=s version=1.0 wordsperline=1\n')
+        
+        
         counter = 0
         for line in f:
             
@@ -167,15 +172,15 @@ def work(inputfile, outputfile):
 
             
 if __name__ == '__main__':
-    work('D:\\projects\\Pipelined-Processor\\interpreter\\file.txt', 
-         'D:\\projects\\Pipelined-Processor\\interpreter\\anotherfile.txt')
+    work('D:\\arch\\project\\Pipelined-Processor\\interpreter\\file.txt', 
+         'D:\\arch\\project\\Pipelined-Processor\\interpreter\\anotherfile.txt')
     print('done')
-    work('D:\\projects\\Pipelined-Processor\\interpreter\\orgtest.txt', 
+    '''  work('D:\\projects\\Pipelined-Processor\\interpreter\\orgtest.txt', 
          'D:\\projects\\Pipelined-Processor\\interpreter\\orgtestoutput.txt')
     print('done')
     work('D:\\projects\\Pipelined-Processor\\interpreter\\codepart2.txt', 
          'D:\\projects\\Pipelined-Processor\\interpreter\\codepart2translation.txt')
-    print('done')
+    print('done') '''
     
     #testing funcs
     #print(hex_to_bin('a1'))

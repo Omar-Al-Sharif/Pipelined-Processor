@@ -23,7 +23,7 @@ ARCHITECTURE axsync_ram_a OF axram IS
 BEGIN
 PROCESS(clk) IS 
 BEGIN
- IF falling_edge(clk) THEN 
+ IF rising_edge(clk) THEN 
  IF (we = '1' and rst='0') THEN 
  ram(to_integer(unsigned((write_adress)))) <= datain;
  ELSIF  (rst='1' )THEN
@@ -33,6 +33,8 @@ BEGIN
  END IF;
  
 END PROCESS;
- dataout1 <= ram(to_integer(unsigned((read1_addres))));
- dataout2 <= ram(to_integer(unsigned((read2_addres))));
+ dataout1 <= datain when (read1_addres=write_adress)
+  else ram(to_integer(unsigned((read1_addres))));
+ dataout2 <= datain when (read2_addres=write_adress) 
+   else ram(to_integer(unsigned((read2_addres))));
 END axsync_ram_a;

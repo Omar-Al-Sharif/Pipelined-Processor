@@ -42,7 +42,7 @@ BEGIN
             memWrite <= '0';
             memRead <= '0';
             wbEnable <= '1';
-            aluEnable <= '1';
+            aluEnable <= '0';
             inportControl <='1';
 
         ELSIF (opcode = "10000") THEN --LDD--
