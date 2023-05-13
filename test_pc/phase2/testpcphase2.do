@@ -17,6 +17,6 @@ force -freeze sim:/pc/rs 1 30000
 
 force -freeze sim:/pc/branch 1 1000
 force -freeze sim:/pc/branchaddress b1 0
-force -freeze sim:/pc/branch 0 1200
+force -freeze sim:/pc/branch 0 10000
 
 run 1000
