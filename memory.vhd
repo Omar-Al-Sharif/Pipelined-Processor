@@ -16,7 +16,7 @@ ARCHITECTURE archOfMemory OF memory IS
     TYPE ram_type IS ARRAY(0 TO 1023) OF STD_LOGIC_VECTOR(15 DOWNTO 0); --address space total is 1 KB
     SIGNAL ram : ram_type;
     -- Use a signal instead of a variable for the stack pointer
-    SIGNAL stackPointer_sig : integer := 2**10; -- 10; -- for testing
+    SIGNAL stackPointer_sig : integer := 2**10-1; -- 10; -- for testing
 BEGIN
     PROCESS (clk) IS
     BEGIN
