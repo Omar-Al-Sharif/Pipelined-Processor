@@ -26,7 +26,6 @@ force -freeze sim:/memory/memRead 0 100
 force -freeze sim:/memory/address 2 100
 force -freeze sim:/memory/value 00b1 100
 
-
 force -freeze sim:/memory/memWrite 0 200
 force -freeze sim:/memory/memRead 1 200
 force -freeze sim:/memory/address 2 200
@@ -69,41 +68,40 @@ force -freeze sim:/memory/memRead 0 900
 force -freeze sim:/memory/address 1 900
 force -freeze sim:/memory/value 00a2 900
 
-force -freeze sim:/memory/memWrite 1 1000
+force -freeze sim:/memory/memWrite 0 1000
 force -freeze sim:/memory/memRead 0 1000
 force -freeze sim:/memory/address 1 1000
-force -freeze sim:/memory/value 00a3 1000
+force -freeze sim:/memory/value 00d1 1000
 
-force -freeze sim:/memory/memWrite 0 1100
-force -freeze sim:/memory/memRead 1 1100
+force -freeze sim:/memory/memWrite 1 1100
+force -freeze sim:/memory/memRead 0 1100
 force -freeze sim:/memory/address 1 1100
-force -freeze sim:/memory/value 00b1 1100
+force -freeze sim:/memory/value 00a3 1100
 
 force -freeze sim:/memory/memWrite 0 1200
 force -freeze sim:/memory/memRead 1 1200
 force -freeze sim:/memory/address 1 1200
-force -freeze sim:/memory/value 00b2 1200
+force -freeze sim:/memory/value 00b1 1200
 
-force -freeze sim:/memory/memWrite 1 1300
+force -freeze sim:/memory/memWrite 0 1300
 force -freeze sim:/memory/memRead 0 1300
 force -freeze sim:/memory/address 1 1300
-force -freeze sim:/memory/value 00a4 1300
+force -freeze sim:/memory/value 00d2 1300
 
-force -freeze sim:/memory/memWrite 1 1400
-force -freeze sim:/memory/memRead 0 1400
+force -freeze sim:/memory/memWrite 0 1400
+force -freeze sim:/memory/memRead 1 1400
 force -freeze sim:/memory/address 1 1400
-force -freeze sim:/memory/value 00a5 1400
+force -freeze sim:/memory/value 00b2 1400
 
-
-force -freeze sim:/memory/memWrite 0 1500
-force -freeze sim:/memory/memRead 1 1500
+force -freeze sim:/memory/memWrite 1 1500
+force -freeze sim:/memory/memRead 0 1500
 force -freeze sim:/memory/address 1 1500
-force -freeze sim:/memory/value 00b3 1500
+force -freeze sim:/memory/value 00a4 1500
 
 force -freeze sim:/memory/memWrite 1 1600
 force -freeze sim:/memory/memRead 0 1600
 force -freeze sim:/memory/address 1 1600
-force -freeze sim:/memory/value 00a6 1600
+force -freeze sim:/memory/value 00a5 1600
 
 
 force -freeze sim:/memory/memWrite 0 1700
@@ -111,4 +109,15 @@ force -freeze sim:/memory/memRead 1 1700
 force -freeze sim:/memory/address 1 1700
 force -freeze sim:/memory/value 00b3 1700
 
-run 1800
+force -freeze sim:/memory/memWrite 1 1800
+force -freeze sim:/memory/memRead 0 1800
+force -freeze sim:/memory/address 1 1800
+force -freeze sim:/memory/value 00a6 1800
+
+
+force -freeze sim:/memory/memWrite 0 1900
+force -freeze sim:/memory/memRead 1 1900
+force -freeze sim:/memory/address 1 1900
+force -freeze sim:/memory/value 00b3 1900
+
+run 2000
