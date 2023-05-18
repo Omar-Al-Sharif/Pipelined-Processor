@@ -6,9 +6,10 @@ ENTITY pc IS
 		en : IN STD_LOGIC;
 		clk : IN STD_LOGIC;
 		rs : IN STD_LOGIC;
+		count : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
 		branch : IN STD_LOGIC;
-		branchaddress : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-		count : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)); --16 bit pc value
+		branchaddress : IN STD_LOGIC_VECTOR (15 DOWNTO 0)
+		); --16 bit pc value
 END ENTITY pc;
 ARCHITECTURE archPc OF pc IS
 BEGIN
