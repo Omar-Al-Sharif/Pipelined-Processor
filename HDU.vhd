@@ -2,8 +2,8 @@ LIBRARY IEEE;
 USE IEEE.std_logic_1164.all;
 
 entity HazardDetectionUnit is
-port(Stall,Flush:out std_logic_vector (4 downto 0); 
-
+port( 
+StallPC_Fetch,StallDecodA,FlushFetchD,FlushDecodeA,FlushAluM in std_logic;
 memreadAlu,memwriteAlu: in std_logic;
 memreadM1,memwriteM1: in std_logic;
 memreadM2,wbM2: in std_logic;
