@@ -6,8 +6,10 @@ ENTITY pc IS
 		en : IN STD_LOGIC;
 		clk : IN STD_LOGIC;
 		rs : IN STD_LOGIC;
-		branch : IN STD_LOGIC;
-		branchaddress : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+		conditional_branch : IN STD_LOGIC;
+		conditional_alu_branchaddress : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+		nonconditional_branch : IN STD_LOGIC;
+		nonconditional_decode_branchaddress : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
 		count : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)); --16 bit pc value
 END ENTITY pc;
 ARCHITECTURE archPc OF pc IS
@@ -17,8 +19,10 @@ BEGIN
 	BEGIN
 		IF (rs = '1' OR countTemp >= 65536) THEN -- reset or 2^16 = 65536, check to avoid overflow
 			countTemp := 0; --reset program counter to start
-		ELSIF (rising_edge(clk) AND en = '1' AND branch = '1') THEN
-			countTemp := to_integer(unsigned(branchaddress));
+		ELSIF (rising_edge(clk) AND en = '1' AND conditional_branch = '1') THEN
+			countTemp := to_integer(unsigned(conditional_alu_branchaddress));
+		ELSIF (rising_edge(clk) AND en = '1' AND nonconditional_branch = '1') THEN
+			countTemp := to_integer(unsigned(nonconditional_decode_branchaddress));
 		ELSIF (rising_edge(clk) AND en = '1') THEN
 			countTemp := countTemp + 1;
 			-- if instruction cache is divided into 2byte (16 bit) chunks and our instruction size is 32 bits so increment by 2
