@@ -15,12 +15,15 @@ end ENTITY;
 
 architecture integration of processor is
 
-component ifstage IS
+COMPONENT ifstage IS
     PORT (
         clk, rst : IN STD_LOGIC;
         instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+        pcEnable: IN STD_LOGIC;
+        jumpAddress: IN STD_LOGIC_VECTOR(15 DOWNTO 0)
+
     );
-END component;
+end COMPONENT;
 
 component buff is    
 	generic (n: integer := 16);
@@ -68,7 +71,7 @@ END component;
 
 
 component memstage IS
-     PORT (
+    PORT (
         clk : IN STD_LOGIC;
         memWrite, memRead : IN STD_LOGIC; -- read and write enables
         address, value : IN STD_LOGIC_VECTOR(15 DOWNTO 0); --  adress = location for loading or location for storing in mem, value = value to be stored
