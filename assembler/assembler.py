@@ -94,8 +94,8 @@ def line_to_command(line, counter):
     #STD HAS OPCODE AND SRC1 AND SRC2 ONLY
     elif line[0] == 'STD':
         opcode = opcode_dict[line[0]]
-        src1 = register_dict[line[1]]
-        src2 = register_dict[line[2]]
+        src2 = register_dict[line[1]]
+        src1 = register_dict[line[2]]
         
     #IN AND JMP AND INC AND CALL AND JC AND JZ AND POP HAVE OPCODE AND DEST ONLY
     elif line[0] == 'IN' or line[0] == 'JMP'  or line[0] == 'CALL' or line[0] == 'JC' or line[0] == 'JZ' or line[0] == 'POP':
