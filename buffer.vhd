@@ -10,7 +10,7 @@ end entity buff;
 
 architecture buff_arch of buff is
 begin
-	process(clk,rst)
+	process(clk)
 	begin
 		if (rst='1') then
 			q<=(others=>'0');

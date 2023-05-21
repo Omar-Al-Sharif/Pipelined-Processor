@@ -3,10 +3,10 @@ USE IEEE.std_logic_1164.all;
 
 entity HazardDetectionUnit is
 port( 
-StallPC_Fetch,StallDecodA,FlushFetchD,FlushDecodeA,FlushAluM in std_logic;
+StallPC_Fetch,StallDecodA,FlushFetchD,FlushDecodeA,FlushAluM out std_logic;
 memreadAlu,memwriteAlu: in std_logic;
 memreadM1,memwriteM1: in std_logic;
-memreadM2,wbM2: in std_logic;
+'memreadM2,wbM2: in std_logic;
 
 rDstM1:in std_logic_vector(3 downto 0);
 rDstM2:in std_logic_vector(3 downto 0);
@@ -49,5 +49,6 @@ begin
     or (memreadM1 = '1' and ((rdstM1 = src1Alu) or (rdstM1 = src2Alu))) --load use
     or ( (memreadM1 = '1' or memwriteM1='1') and( memreadAlu = '1' or memwriteAlu='1')))--2 mem stall
 	else '0';
+    -- flush happend at the eadge of the new clck
 
 end archHDU;
