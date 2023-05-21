@@ -129,6 +129,10 @@ def work(inputfile, outputfile):
     instruction_write_dict = {}
     
     with open(inputfile) as f, open(outputfile, 'w') as out:
+        out.write('// memory data file (do not edit the following line - required for mem load use)\n')
+        out.write('// instance=/instructioncache/fx/ram\n')
+        out.write('// format=mti addressradix=h dataradix=s version=1.0 wordsperline=1\n')
+        
         counter = 0
         for line in f:
             
