@@ -15,12 +15,13 @@ end entity regfile;
 architecture regfile_arch1 of regfile is
 	
 	component axram IS
-PORT (clk : IN std_logic;
- we : IN std_logic;
- rst : IN std_logic;
-read1_addres, read2_addres, write_adress :in std_logic_vector(2 downto 0);
- datain : IN std_logic_vector(15 DOWNTO 0);
- dataout1 ,dataout2: OUT std_logic_vector(15 DOWNTO 0) );
+        PORT (clk : IN std_logic;
+        we : IN std_logic;
+        rst : IN std_logic;
+       read1_addres, read2_addres,read3_addres, write_adress :in std_logic_vector(2 downto 0);--address of regester
+        datain : IN std_logic_vector(15 DOWNTO 0);  --for write back
+        dataout1 ,dataout2,dataout3: OUT std_logic_vector(15 DOWNTO 0) );  -- src1 and src2 for alu
+       
 	end component;
 
 begin
