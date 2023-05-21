@@ -9,7 +9,7 @@ ENTITY controller IS
         memWrite, memRead, wbEnable, aluEnable: OUT STD_LOGIC;
         inportControl,outportControl: OUT STD_LOGIC;
         unconditionalJump: OUT STD_LOGIC;
-	    stackEnable :OUT STD_LOGIC;
+	stackEnable :OUT STD_LOGIC;
         aluOperation : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
 
     );
