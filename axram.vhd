@@ -9,9 +9,9 @@ ENTITY axram IS
 PORT (clk : IN std_logic;
  we : IN std_logic;
  rst : IN std_logic;
-read1_addres, read2_addres, write_adress :in std_logic_vector(2 downto 0);--address of regester
+read1_addres, read2_addres,read3_addres, write_adress :in std_logic_vector(2 downto 0);--address of regester
  datain : IN std_logic_vector(15 DOWNTO 0);  --for write back
- dataout1 ,dataout2: OUT std_logic_vector(15 DOWNTO 0) );  -- src1 and src2 for alu
+ dataout1 ,dataout2,dataout3: OUT std_logic_vector(15 DOWNTO 0) );  -- src1 and src2 for alu
 
 END ENTITY axram;
 
@@ -37,4 +37,6 @@ END PROCESS;
   else ram(to_integer(unsigned((read1_addres))));
  dataout2 <= datain when (read2_addres=write_adress) 
    else ram(to_integer(unsigned((read2_addres))));
+   dataout3 <= datain when (read3_addres=write_adress) 
+   else ram(to_integer(unsigned((read3_addres))));
 END axsync_ram_a;
