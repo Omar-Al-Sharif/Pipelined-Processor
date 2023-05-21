@@ -7,6 +7,9 @@ ENTITY ifstage IS
     PORT (
         clk, rst : IN STD_LOGIC;
         instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+        pcEnable: IN STD_LOGIC;
+        jumpAddress: IN STD_LOGIC_VECTOR(15 DOWNTO 0)
+
     );
 END ENTITY ifstage;
 ARCHITECTURE IFStage OF ifstage IS
@@ -22,19 +25,21 @@ ARCHITECTURE IFStage OF ifstage IS
 
     END COMPONENT;
 
-    COMPONENT pc IS
-        PORT (
-            en : IN STD_LOGIC;
-            clk : IN STD_LOGIC;
-            rs : IN STD_LOGIC;
-            count : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)); --16 bit pc value
-    END COMPONENT;
+COMPONENT pc IS
+	PORT (
+		en : IN STD_LOGIC;
+		clk : IN STD_LOGIC;
+		rs : IN STD_LOGIC;
+		branch : IN STD_LOGIC;
+		branchaddress : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+		count : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)); --16 bit pc value
+END COMPONENT;
 
     signal counter: STD_LOGIC_VECTOR (15 DOWNTO 0);
     signal dummy: std_logic_vector(31 downto 0);
 BEGIN
 
-programCounter: pc port map('1',clk,rst, counter);
+programCounter: pc port map(pcEnable,clk,rst, jumpAddress, counter);
 cache: instructionCache generic map(16) port map(clk, rst, '0', counter, counter, instruction, dummy);
 --
 END IFStage; -- arch
