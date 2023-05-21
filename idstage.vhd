@@ -12,7 +12,11 @@ ENTITY idstage IS
         write_data : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         opcode : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
         memWrite, memRead, wbEnable, aluEnable, inportControl : OUT STD_LOGIC;
-        source1, source2 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+        source1, source2 , rdstValue : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+
+        -- Phase 3:
+
+        read3_addres: IN std_logic_vector(2 downto 0);
 
         -- Added Contoller Phase 3 outputs
         aluOperation : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -35,12 +39,11 @@ ARCHITECTURE IDStage OF idstage IS
 
     COMPONENT regfile IS
         PORT (
-            clk, rst : IN STD_LOGIC;
-
-            write_en : IN STD_LOGIC;
-            read1_addres, read2_addres, write_adress : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-            source1, source2 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-            write_data : IN STD_LOGIC_VECTOR(15 DOWNTO 0));
+                clk, rst : IN STD_LOGIC;
+                write_en : IN STD_LOGIC;
+                read1_addres, read2_addres, read3_addres, write_adress : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+                source1, source2, source3 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+                write_data : IN STD_LOGIC_VECTOR(15 DOWNTO 0));
     END COMPONENT;
 
     COMPONENT controller IS
@@ -74,7 +77,8 @@ ARCHITECTURE IDStage OF idstage IS
 
 BEGIN
 
-    regFile1 : regfile PORT MAP(clk, rst, write_en, read1_addres, read2_addres, write_adress, source1, source2, write_data);
+    regFile1: regfile port map (clk, rst, write_en, read1_addres, read2_addres, read3_addres, write_adress, source1, source2, rdstValue, write_data)
+    -- regFile1 : regfile PORT MAP(clk, rst, write_en, read1_addres, read2_addres, write_adress, source1, source2, write_data);
     controller1 : controller PORT MAP(opcode, memWrite, memRead, wbEnable, aluEnable, inportControl, outportControl, controllerUnConditionalJmp, stackEnable, aluOperation);
     hdu1 : HazardDetectionUnit PORT MAP(StallPC_Fetch, StallDecodA, FlushFetchD, FlushDecodeA, FlushAluM, memreadAlu, memwriteAlu,
     memreadM1, memwriteM1, memreadM2, wbM2, rDstM1, rDstM2, src1Alu, src2Alu ,controllerUnConditionalJmp, conditionalJmp);
