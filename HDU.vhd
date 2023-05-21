@@ -8,10 +8,10 @@ memreadAlu,memwriteAlu: in std_logic;
 memreadM1,memwriteM1: in std_logic;
  memreadM2,wbM2: in std_logic;
 
-rDstM1:in std_logic_vector(3 downto 0);
-rDstM2:in std_logic_vector(3 downto 0);
-src1Alu:in std_logic_vector(3 downto 0);
-src2Alu:in std_logic_vector(3 downto 0);
+rDstM1:in std_logic_vector(2 downto 0);
+rDstM2:in std_logic_vector(2 downto 0);
+src1Alu:in std_logic_vector(2 downto 0);
+src2Alu:in std_logic_vector(2 downto 0);
 
 unconditionalJmp,conditionalJmp:in std_logic
 );

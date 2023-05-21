@@ -12,9 +12,9 @@ ENTITY alu IS
 		aluToMemAddress : OUT STD_LOGIC_VECTOR(15 DOWNTO 0); --the address fed to memory (whether to read or write) -> ithink it's dependant on write enable or read enable from memory
 		-- integration from outside or gets passed by alu, ask omar since he is doing the integration, might be not needed --ziad comment
 		--fix naming aluToMemAddressress for readability to --ziad comment
-		result : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+		result : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 		conditionalJump : OUT STD_LOGIC;
-		Immediate    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);--//17/5/2023
+		Immediate    : IN STD_LOGIC_VECTOR(15 DOWNTO 0)--//17/5/2023
 	);
 END ENTITY;
 
