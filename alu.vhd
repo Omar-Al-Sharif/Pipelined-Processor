@@ -6,15 +6,15 @@ USE IEEE.std_logic_unsigned.ALL;
 ENTITY alu IS
 	PORT (
 		Src1, Src2   : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-		Immediate    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);--//17/5/2023
 		aluOperation : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
 		aluEnable    : IN STD_LOGIC;
 		zeroFlag, negativeFlag, carryFlag : OUT STD_LOGIC;
 		aluToMemAddress : OUT STD_LOGIC_VECTOR(15 DOWNTO 0); --the address fed to memory (whether to read or write) -> ithink it's dependant on write enable or read enable from memory
-		conditionalJump : OUT STD_LOGIC;
 		-- integration from outside or gets passed by alu, ask omar since he is doing the integration, might be not needed --ziad comment
 		--fix naming aluToMemAddressress for readability to --ziad comment
 		result : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+		conditionalJump : OUT STD_LOGIC;
+		Immediate    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);--//17/5/2023
 	);
 END ENTITY;
 

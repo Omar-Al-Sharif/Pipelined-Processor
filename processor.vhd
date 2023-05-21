@@ -20,7 +20,8 @@ COMPONENT ifstage IS
         clk, rst : IN STD_LOGIC;
         instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
         pcEnable: IN STD_LOGIC;
-        jumpAddress: IN STD_LOGIC_VECTOR(15 DOWNTO 0)
+        decodeJmpAddress, aluJmpAddress : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+        conditionalBranchEn , unConditionalBranchEn : IN STD_LOGIC
 
     );
 end COMPONENT;
@@ -44,14 +45,31 @@ component idstage IS
     PORT (
 
         clk, rst : IN STD_LOGIC;
-        write_en : in std_logic;
+        write_en : IN STD_LOGIC;
         read1_addres, read2_addres, write_adress : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         write_data : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         opcode : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-        memWrite, memRead, wbEnable, aluEnable, inportControl: OUT STD_LOGIC;
+        memWrite, memRead, wbEnable, aluEnable, inportControl : OUT STD_LOGIC;
         source1, source2 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-        aluOperation : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
+        aluOperation : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
 
+        -- Phase 3:
+        rdstValue : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+        read3_addres: IN std_logic_vector(2 downto 0);
+
+        -- Added Contoller Phase 3 outputs
+        outportControl, conditionalJmp, stackEnable : OUT STD_LOGIC;
+
+        -- Added Hazard detection unit inputs & outputs:
+        memreadAlu, memwriteAlu : IN STD_LOGIC;
+        memreadM1, memwriteM1 : IN STD_LOGIC;
+        memreadM2, wbM2 : IN STD_LOGIC;
+        rDstM1 : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+        rDstM2 : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+        src1Alu : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+        src2Alu : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+        conditionalJmp : IN STD_LOGIC
+        StallPC_Fetch, StallDecodA, FlushFetchD, FlushDecodeA, FlushAluM OUT STD_LOGIC;
     );
 END component;
 

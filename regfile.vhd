@@ -1,33 +1,28 @@
-library ieee;
-use ieee.std_logic_1164.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
 
-entity regfile is
-	port (clk, rst: in std_logic;
-        
-        write_en : in std_logic;
-        read1_addres,read2_addres,read3_addres,write_adress :in std_logic_vector(2 downto 0);
-        source1,source2,source3: out std_logic_vector(15 downto 0);
-        write_data: in std_logic_vector(15 downto 0));
+ENTITY regfile IS
+        PORT (
+                clk, rst : IN STD_LOGIC;
+                write_en : IN STD_LOGIC;
+                read1_addres, read2_addres, read3_addres, write_adress : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+                source1, source2, source3 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+                write_data : IN STD_LOGIC_VECTOR(15 DOWNTO 0));
+END ENTITY regfile;
 
+ARCHITECTURE regfile_arch1 OF regfile IS
 
-end entity regfile;
+        COMPONENT axram IS
+                PORT (
+                        clk : IN STD_LOGIC;
+                        we : IN STD_LOGIC;
+                        rst : IN STD_LOGIC;
+                        read1_addres, read2_addres, write_adress : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        datain : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+                        dataout1, dataout2 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0));
+        END COMPONENT;
 
-architecture regfile_arch1 of regfile is
-	
-	component axram IS
-PORT (clk : IN std_logic;
- we : IN std_logic;
- rst : IN std_logic;
-read1_addres, read2_addres, write_adress :in std_logic_vector(2 downto 0);
- datain : IN std_logic_vector(15 DOWNTO 0);
- dataout1 ,dataout2: OUT std_logic_vector(15 DOWNTO 0) );
-	end component;
+BEGIN
+        fx : axram GENERIC MAP(n) PORT MAP(clk, write_en, rst, read1_addres, read2_addres, read3_addres, write_adress, write_data, source1, source2, source3);
 
-begin
-
-
-	fx: axram generic map(n) port map(clk,write_en,rst,read1_addres, read2_addres,read3_addres ,write_adress,write_data,source1,source2,source3);
-
-
-
-end architecture regfile_arch1;
+END ARCHITECTURE regfile_arch1;
