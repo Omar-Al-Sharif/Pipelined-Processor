@@ -11,7 +11,6 @@ ENTITY alu IS
 		aluEnable    : IN STD_LOGIC;
 		zeroFlag, negativeFlag, carryFlag : OUT STD_LOGIC;
 		aluToMemAddress : OUT STD_LOGIC_VECTOR(15 DOWNTO 0); --the address fed to memory (whether to read or write) -> ithink it's dependant on write enable or read enable from memory
-		branchingAddress: OUT STD_LOGIC_VECTOR(15 DOWNTO 0); --//19/5/2023
 		conditionalJump : OUT STD_LOGIC;
 		-- integration from outside or gets passed by alu, ask omar since he is doing the integration, might be not needed --ziad comment
 		--fix naming aluToMemAddressress for readability to --ziad comment
@@ -128,19 +127,15 @@ BEGIN
 			--Branching Instructions--///////////////////////////////////
 			ELSIF (aluOperation = "10011") THEN --JZ-- 
 				IF(zeroFlagSignal = '1') THEN
-					branchingAddress <= Src1;
 					conditionalJump <= '1';
 				ELSE
-					branchingAddress <= (others => '0');
 					conditionalJump <= '0';
 				END IF;
 
 			ELSIF (aluOperation = "10100") THEN --JC-- 
 				IF(carryFlagSignal = '1') THEN
-					branchingAddress <= Src1;
 					conditionalJump <= '1';
 				ELSE
-					branchingAddress <= (others => '0');
 					conditionalJump <= '0';
 				END IF;
 	
