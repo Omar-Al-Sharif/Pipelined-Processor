@@ -263,7 +263,7 @@ Flags: buff generic map(3) port map('1', clk, rst, flagsIn, flagsOut);
 
 -- sizes:                                           3                             16             16                 1          +       1                  +       1                 
 exMemBufferInput <= (stackEnableIdExBuffOut & outPortControlIdExBuffOut & destIdExBuffOut & aluResult & aluAddress  & memWriteIdExBuffOut & memReadIdExBuffOut & wbEnableIdExBuffOut & inportControlIdExBuffOut & inportIdExBuffOut);
-EX_Mem_Buffer: buff generic map(57) port map('1', clk, flushIDEXBuffer, exMemBufferInput, exMemBufferOutput);
+EX_Mem_Buffer: buff generic map(57) port map('1', clk, flushM1M2Buffer, exMemBufferInput, exMemBufferOutput);
 
 stackEnableExMemBuffOut <= exMemBufferOutput(56);
 outPortControlExMemBuffOut <= exMemBufferOutput(55);

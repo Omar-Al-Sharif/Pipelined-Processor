@@ -1,8 +1,8 @@
 .org 0
 SETC
 IADD R1,R1,50
-STD R3,R3
-LDD R2,R2                      #INTERRUPT HERE                      #INTERRUPT HERE
+STD R1,R1
+INC R1,R1                     #INTERRUPT HERE                      #INTERRUPT HERE
 NOP
 NOP
 NOP

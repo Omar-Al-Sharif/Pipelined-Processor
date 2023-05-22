@@ -59,7 +59,7 @@ ARCHITECTURE IDStage OF idstage IS
     END COMPONENT;
 
     COMPONENT HazardDetectionUnit IS
-        PORT (
+        PORT (clck:in std_logic;
             StallPC_Fetch, StallDecodA, FlushFetchD, FlushDecodeA, FlushAluM: OUT STD_LOGIC;
             memreadAlu, memwriteAlu : IN STD_LOGIC;
             memreadM1, memwriteM1 : IN STD_LOGIC;
@@ -81,7 +81,7 @@ BEGIN
     -- regFile1 : regfile PORT MAP(clk, rst, write_en, read1_addres, read2_addres, write_adress, source1, source2, write_data);
     controller1 : controller PORT MAP(opcode, memWrite, memRead, wbEnable, aluEnable, inportControl, outportControl, controllerUnConditionalJmp, stackEnable, aluOperation);
     unconditionalJmp <= controllerUnConditionalJmp;
-    hdu1 : HazardDetectionUnit PORT MAP(
+    hdu1 : HazardDetectionUnit PORT MAP(clk,
         StallPC_Fetch, StallDecodA, FlushFetchD, FlushDecodeA, FlushAluM, memreadAlu, memwriteAlu,
         memreadM1, memwriteM1, memreadM2, wbM2, rDstM1, rDstM2, src1Alu, src2Alu, controllerUnConditionalJmp, conditionalJmp);
 END IDStage;
