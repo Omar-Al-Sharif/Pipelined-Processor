@@ -62,7 +62,7 @@ force -freeze sim:/processor/clk 1 0, 0 {2 ps} -r 5
 force -freeze sim:/processor/rst 1 0
 run
 #force -freeze sim:/processor/inPort 0001 50
-#force -freeze sim:/processor/rst 0 0 
+force -freeze sim:/processor/rst 0 0 
 #force -freeze sim:/processor/inPort 000F 55
 #force -freeze sim:/processor/inPort 00C8 60
 #force -freeze sim:/processor/inPort 001F 65

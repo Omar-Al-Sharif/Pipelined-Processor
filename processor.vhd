@@ -206,7 +206,7 @@ IF_Stage: ifstage port map(clk, rst, fetchedInstruction, hduPcStall, decodeJmpAd
 ifIdBufferInput <=  (inport & fetchedInstruction );
 IF_ID_Buffer: buff generic map(48) port map(hduPcStall, clk, flushIFIDBuffer, ifIdBufferInput , ifIdBufferOutput);
 
-immIfIDBuffOut <= ifIdBufferOutput (15 downto 0);
+immIfIDBuffOut <= ifIdBufferOutput (17 downto 2);
 opCodeIfIDBuffOut <= ifIdBufferOutput(31 downto 27);
 destIfIDBuffOut <= ifIdBufferOutput (26 downto 24);
 src1IfIDBuffOut <= ifIdBufferOutput (23 downto 21);
@@ -254,7 +254,7 @@ aluAddress , aluResult, conditionalJmp, immIdExBuffOut, src1AddressIdExBuffOut, 
 destExMemBuffOut, destM2WbBuffOut, wbEnableExMemBuffOut, wbEnableMemWbBuffOut,
 aluResultExMemBuffOut, wbDataFromMux);
 
-flagsIn <= (zeroFlag, negativeFlag, carryFlag);
+flagsIn <= (carryFlag & negativeFlag & zeroFlag);
 Flags: buff generic map(3) port map('1', clk, rst, flagsIn, flagsOut);
 
 --                      54-52    51-36      35-20          19        18       17              16         15-0
