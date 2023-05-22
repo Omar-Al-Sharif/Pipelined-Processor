@@ -202,7 +202,7 @@ begin
 
 -- IF Stage: ----------------------------------------------------------------------
 
-IF_Stage: ifstage port map(clk, rst, fetchedInstruction, hduPcStall, decodeJmpAddress, aluJmpAddress, conditionalJmpEn, unConditionalJmpEn);
+IF_Stage: ifstage port map(clk, rst, fetchedInstruction, hduPcStall, decodeJmpAddress, aluJmpAddress, conditionalJmp, unconditionalJmp);
 ifIdBufferInput <=  (inport & fetchedInstruction );
 IF_ID_Buffer: buff generic map(48) port map(hduPcStall, clk, flushIFIDBuffer, ifIdBufferInput , ifIdBufferOutput);
 
