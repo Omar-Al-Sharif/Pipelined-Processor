@@ -14,10 +14,13 @@ add wave -position end  sim:/processor/wbEnable
 add wave -position end  sim:/processor/aluEnable
 add wave -position end  sim:/processor/src1
 add wave -position end  sim:/processor/src2
+<<<<<<< HEAD
 add wave -position end  sim:/processor/IF_Stage/programCounter/nonconditional_decode_branchaddress
 add wave -position end  sim:/processor/IF_Stage/programCounter/nonconditional_branch 
 add wave -position end  sim:/processor/IF_Stage/programCounter/conditional_alu_branchaddress 
 add wave -position end  sim:/processor/IF_Stage/programCounter/conditional_branch 
+=======
+>>>>>>> fe5fe329d71208faed9b0fe268f1d58328bbb31b
 #add wave -position end  sim:/processor/aluOp
 #add wave -position end  sim:/processor/IF_Stage/instruction
 add wave -position end  sim:/processor/IF_Stage/counter
@@ -59,6 +62,7 @@ add wave -position end sim:/processor/ID_Stage/controller1/*
 #add wave -position end  sim:/processor/m2WbBufferOutput
 #add wave -position end  sim:/processor/wbDataMemWbBuffOut
 #add wave -position end  sim:/processor/m1M2BufferInput
+<<<<<<< HEAD
 add wave -position insertpoint  \
 sim:/processor/conditionalJmpEn \
 sim:/processor/unConditionalJmp
@@ -79,6 +83,8 @@ sim:/processor/ID_Stage/hdu1/FlushAluM
 add wave -position insertpoint  \
 sim:/processor/Mem_Stage/memWrite \
 sim:/processor/Mem_Stage/memRead
+=======
+>>>>>>> fe5fe329d71208faed9b0fe268f1d58328bbb31b
 
 
 #force -freeze sim:/processor/inPort FFFE 0
