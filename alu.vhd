@@ -102,6 +102,13 @@ BEGIN
 --				aluToMemAddress <= (OTHERS => '0');
 --				resultSignal <= (OTHERS => '0'); --this is correct inport value passes by buffers only till it reaches mux --ziad comment
 --				result <= x"0000";
+
+
+			ELSIF (aluOperation = "01100") THEN --OUT-- 
+            result <= Src1;
+			conditionalJump <= '0';
+
+
 			ELSIF (aluOperation = "01110") THEN --PUSH--  //needs to be changed in the doceument
 				--aluToMemAddress <= Immediate;
 				--resultSignal <= (OTHERS => '0'); to not affect flags (-ve flag)

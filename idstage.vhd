@@ -30,8 +30,8 @@ ENTITY idstage IS
         rDstM2 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         src1Alu : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         src2Alu : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        conditionalJmp : IN STD_LOGIC
-        StallPC_Fetch, StallDecodA, FlushFetchD, FlushDecodeA, FlushAluM OUT STD_LOGIC;
+        conditionalJmp : IN STD_LOGIC;
+        StallPC_Fetch, StallDecodA, FlushFetchD, FlushDecodeA, FlushAluM : OUT STD_LOGIC
     );
 END ENTITY idstage;
 
@@ -60,7 +60,7 @@ ARCHITECTURE IDStage OF idstage IS
 
     COMPONENT HazardDetectionUnit IS
         PORT (
-            StallPC_Fetch, StallDecodA, FlushFetchD, FlushDecodeA, FlushAluM OUT STD_LOGIC;
+            StallPC_Fetch, StallDecodA, FlushFetchD, FlushDecodeA, FlushAluM: OUT STD_LOGIC;
             memreadAlu, memwriteAlu : IN STD_LOGIC;
             memreadM1, memwriteM1 : IN STD_LOGIC;
             memreadM2, wbM2 : IN STD_LOGIC;
@@ -77,7 +77,7 @@ ARCHITECTURE IDStage OF idstage IS
 
 BEGIN
 
-    regFile1 : regfile PORT MAP(clk, rst, write_en, read1_addres, read2_addres, read3_addres, write_adress, source1, source2, rdstValue, write_data)
+    regFile1 : regfile PORT MAP(clk, rst, write_en, read1_addres, read2_addres, read3_addres, write_adress, source1, source2, rdstValue, write_data);
     -- regFile1 : regfile PORT MAP(clk, rst, write_en, read1_addres, read2_addres, write_adress, source1, source2, write_data);
     controller1 : controller PORT MAP(opcode, memWrite, memRead, wbEnable, aluEnable, inportControl, outportControl, controllerUnConditionalJmp, stackEnable, aluOperation);
     hdu1 : HazardDetectionUnit PORT MAP(

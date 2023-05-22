@@ -22,7 +22,7 @@ ENTITY exstage IS
         REG_WB_ex_mem : IN STD_LOGIC; -- (writeback) control signal for in EX/MEM pipeline register
         REG_WB_mem_wb : IN STD_LOGIC; -- (writeback) control signal for in MEM/WB pipeline register
         ex_mem_out : IN STD_LOGIC_VECTOR(15 DOWNTO 0); -- ALU output from EX/MEM pipeline register
-        mem_wb_out : IN STD_LOGIC_VECTOR(15 DOWNTO 0); -- output from MEM/WB pipeline register (from mem stage 2 to wb)
+        mem_wb_out : IN STD_LOGIC_VECTOR(15 DOWNTO 0) -- output from MEM/WB pipeline register (from mem stage 2 to wb)
 
 
 
@@ -68,8 +68,8 @@ signal aluSrc1, aluSrc2: std_logic_vector(15 DOWNTO 0);
 BEGIN
 
 forwardingunit1: forwarding_unit port map(Src1Address, Src2Address, rd_ex_mem, rd_mem_wb, REG_WB_ex_mem, REG_WB_mem_wb,
- ex_mem_out, mem_wb_out, Src1, Src2, aluSrc1, aluSrc2)
+ ex_mem_out, mem_wb_out, Src1, Src2, aluSrc1, aluSrc2);
 
-alu1: alu port map(aluSrc1,aluSrc2,aluOperation,aluEnable,zeroFlag,negativeFlag,carryFlag,aluToMemAddress,result, conditionalJmp);
+alu1: alu port map(aluSrc1,aluSrc2,aluOperation,aluEnable,zeroFlag,negativeFlag,carryFlag,aluToMemAddress,result, conditionalJump, Immediate);
 
 END EXStage;

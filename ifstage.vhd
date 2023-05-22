@@ -6,7 +6,7 @@ USE IEEE.std_logic_unsigned.ALL;
 ENTITY ifstage IS
     PORT (
         clk, rst : IN STD_LOGIC;
-        instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+        instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         pcEnable: IN STD_LOGIC;
         decodeJmpAddress, aluJmpAddress : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         conditionalBranchEn , unConditionalBranchEn : IN STD_LOGIC

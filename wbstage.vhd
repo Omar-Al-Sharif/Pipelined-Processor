@@ -6,18 +6,27 @@ USE IEEE.std_logic_unsigned.ALL;
 ENTITY wbstage IS
     PORT (
 
-        inData, inport: in std_logic_vector(15 downto 0);
-        inportControl: in std_logic;
-        outData: out std_logic_vector(15 downto 0)  
+        inData, inport : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+        inportControl : IN STD_LOGIC;
+        outData : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+        outPortControl : IN STD_LOGIC;
+        outPortData : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
 END ENTITY wbstage;
 
 ARCHITECTURE WBStage OF wbstage IS
-
-
 BEGIN
 
-    outData <= inport when inportControl = '1' 
-    else inData ;
-    
+    outData <= inport WHEN inportControl = '1'
+        ELSE
+        inData;
+
+    outPortData <= inData WHEN outPortControl = '1'
+        ELSE
+        "0000000000000000";
+
+    outData <= inport WHEN inportControl = '1'
+        ELSE
+        inData;
+
 END WBStage;
