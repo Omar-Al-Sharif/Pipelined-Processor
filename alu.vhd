@@ -49,7 +49,8 @@ BEGIN
 				resultSignal <= NOT Src1;
 				result <= NOT Src1;
 				conditionalJump <= '0';
-
+			elsIF (aluOperation = "00000") THEN --nop-- 
+				conditionalJump <= '0';
 			ELSIF (aluOperation = "00100") THEN --INC--
 				aluToMemAddress <= (OTHERS => '0');
 				resultSignal <= Src1 + 1;
@@ -145,7 +146,11 @@ BEGIN
 				ELSE
 					conditionalJump <= '0';
 				END IF;
+				
 
+			
+              else 
+			  conditionalJump <= '0';
 				--			ELSIF (aluOperation = "10101") THEN --JMP-- 
 				--					branchingAddress <= Src1;
 				--					conditionalJump <= '1';
@@ -231,9 +236,9 @@ BEGIN
 				carryFlag <= '0';
 				carryFlagSignal <= '0';
 				--ELSIF(aluOperation ="01001") then --sub operation only--
-
+			
 				--else
-
+       
 				--carryFlag <= '0';
 
 			END IF;
@@ -254,8 +259,11 @@ BEGIN
 				zeroFlagSignal <= '0';
 			END IF;
 
-		ELSE
+		
+		 elsIF (aluOperation = "00000") THEN --nop-- 
+				conditionalJump <= '0';
 		END IF;
+
 	END PROCESS;
 
 END aluFlow;

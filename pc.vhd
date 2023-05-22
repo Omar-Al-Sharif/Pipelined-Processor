@@ -19,9 +19,9 @@ BEGIN
 	BEGIN
 		IF (rs = '1' OR countTemp >= 65536) THEN -- reset or 2^16 = 65536, check to avoid overflow
 			countTemp := 0; --reset program counter to start
-		ELSIF (rising_edge(clk) AND en = '1' AND conditional_branch = '1') THEN
+		ELSIF (en = '1' AND conditional_branch = '1') THEN
 			countTemp := to_integer(unsigned(conditional_alu_branchaddress));
-		ELSIF (rising_edge(clk) AND en = '1' AND nonconditional_branch = '1') THEN
+		ELSIF ( en = '1' AND nonconditional_branch = '1') THEN
 			countTemp := to_integer(unsigned(nonconditional_decode_branchaddress));
 		ELSIF (rising_edge(clk) AND en = '1') THEN
 			countTemp := countTemp + 1;

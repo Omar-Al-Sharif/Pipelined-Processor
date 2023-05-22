@@ -141,7 +141,7 @@ def work(inputfile, outputfile):
             result = process_line(line)
             #print('result', result)
             
-            if ( result[0].isdigit() or all(c in '0123456789abcdefABCDEF' for c in result[0]) ):
+            if  len(result)<2 and( result[0].isdigit() or all(c in '0123456789abcdefABCDEF' for c in result[0]) ):
                 instruction_write_dict[counter] =  str(hex(counter)[2:]) + ": " + '11010_' + '000_' + '000_' + '000_' + hex_to_bin( result[0] ) + '_00'
                 #for Reset opcode is 11010
                 counter +=1
@@ -171,8 +171,8 @@ def work(inputfile, outputfile):
 
             
 if __name__ == '__main__':
-    work('input.txt', 
-         'output.txt')
+    work('D:\\arch\\project\\Pipelined-Processor\\assembler\\input.txt', 
+         'D:\\arch\\project\\Pipelined-Processor\\instructions.mem')
     print('done')
     
 

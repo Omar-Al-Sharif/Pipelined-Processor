@@ -20,12 +20,14 @@ end entity HazardDetectionUnit;
 --  F D D E M W
 --    F F D E M W
 architecture archHDU of HazardDetectionUnit is
+
+    
 begin
  
     --pc f
-	StallPC_Fetch<='0' when(((memreadM2 = '1' or  wbM2 = '1') and ((rdstM2 = src1Alu) or (rdstM2 = src2Alu)))-- forwording failier
-     or (memreadM1 = '1' and ((rdstM1 = src1Alu) or (rdstM1 = src2Alu))) --load use
-     or ( (memreadM1 = '1' or memwriteM1='1') and( memreadAlu = '1' or memwriteAlu='1')))--2 mem stall
+	StallPC_Fetch<='0' when(--((memreadM2 = '1' or  wbM2 = '1') and ((rdstM2 = src1Alu) or (rdstM2 = src2Alu)))-- forwording failier
+     --or (memreadM1 = '1' and ((rdstM1 = src1Alu) or (rdstM1 = src2Alu))) --load use
+      ( (memreadM1 = '1' or memwriteM1='1') and( memreadAlu = '1' or memwriteAlu='1')))--2 mem stall
 
      else '1';
 
