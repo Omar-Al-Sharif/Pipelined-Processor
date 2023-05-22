@@ -153,8 +153,8 @@ signal writeBackAddress: std_logic_vector(2 downto 0);
 signal m1M2BufferInput: std_logic_vector(39 downto 0);
 signal m1M2BufferOutput: std_logic_vector(39 downto 0);
 signal m2WbBufferOutput: std_logic_vector(39 downto 0);
-signal idExBufferOutput: std_logic_vector(84 downto 0);
-signal idExBufferInput: std_logic_vector(84 downto 0);
+signal idExBufferOutput: std_logic_vector(100 downto 0);
+signal idExBufferInput: std_logic_vector(100 downto 0);
 signal ifIdBufferInput: std_logic_vector(47 downto 0);
 signal ifIdBufferOutput: std_logic_vector(47 downto 0);
 signal exMemBufferInput: std_logic_vector(56 downto 0);
@@ -202,7 +202,7 @@ begin
 
 -- IF Stage: ----------------------------------------------------------------------
 
-IF_Stage: ifstage port map(clk, rst, fetchedInstruction, hduPcStall, decodeJmpAddress, aluJmpAddress, conditionalJmp, unconditionalJmp);
+IF_Stage: ifstage port map(clk, rst, fetchedInstruction, hduPcStall, rdest, aluJmpAddress, conditionalJmp, unconditionalJmp);
 ifIdBufferInput <=  (inport & fetchedInstruction );
 IF_ID_Buffer: buff generic map(48) port map(hduPcStall, clk, flushIFIDBuffer, ifIdBufferInput , ifIdBufferOutput);
 
@@ -228,9 +228,10 @@ conditionalJmp, hduPcStall, stallIDEXBuffer, flushIFIDBuffer , flushIDEXBuffer, 
 
 
 --                                          83          82 - 67                   66-64               63-61             60-58          57             56-41  40-25  24-20    19         18          17          16     15-0
-idExBufferInput <= ( stackEnable & outportControl & immIfIDBuffOut  & src1IfIDBuffOut & src2IfIDBuffOut & destIfIDBuffOut & inportControl & src1 & src2 & aluOp & aluEnable & memWrite & memRead & wbEnable & inport);
-ID_EX_Buffer: buff generic map(85) port map(stallIDEXBuffer, clk, flushIDEXBuffer, idExBufferInput, idExBufferOutput);
+idExBufferInput <= (rdest & stackEnable & outportControl & immIfIDBuffOut  & src1IfIDBuffOut & src2IfIDBuffOut & destIfIDBuffOut & inportControl & src1 & src2 & aluOp & aluEnable & memWrite & memRead & wbEnable & inport);
+ID_EX_Buffer: buff generic map(101) port map(stallIDEXBuffer, clk, flushIDEXBuffer, idExBufferInput, idExBufferOutput);
 
+aluJmpAddress <= idExBufferOutput(100 downto 85);
 stackEnableIdExBuffOut <= idExBufferOutput(84);
 outPortControlIdExBuffOut <= idExBufferOutput(83);
 immIdExBuffOut <= idExBufferOutput (82 downto 67);
