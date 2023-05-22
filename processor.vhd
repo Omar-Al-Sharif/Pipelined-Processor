@@ -105,8 +105,10 @@ component memstage IS
     PORT (
         clk : IN STD_LOGIC;
         memWrite, memRead : IN STD_LOGIC; -- read and write enables
-        address, value : IN STD_LOGIC_VECTOR(15 DOWNTO 0); --  adress = location for loading or location for storing in mem, value = value to be stored
-        dataout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)); -- data out from this block
+        address, value : IN STD_LOGIC_VECTOR(15 DOWNTO 0); -- address = location for loading or location for storing in mem, value = value to be stored
+        dataout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0); -- data out from this block
+        stacken: IN STD_LOGIC
+        ); -- used in combination with read and write enables
 END component;
 
 
@@ -151,12 +153,12 @@ signal writeBackAddress: std_logic_vector(2 downto 0);
 signal m1M2BufferInput: std_logic_vector(39 downto 0);
 signal m1M2BufferOutput: std_logic_vector(39 downto 0);
 signal m2WbBufferOutput: std_logic_vector(39 downto 0);
-signal idExBufferOutput: std_logic_vector(83 downto 0);
-signal idExBufferInput: std_logic_vector(83 downto 0);
+signal idExBufferOutput: std_logic_vector(84 downto 0);
+signal idExBufferInput: std_logic_vector(84 downto 0);
 signal ifIdBufferInput: std_logic_vector(47 downto 0);
 signal ifIdBufferOutput: std_logic_vector(47 downto 0);
-signal exMemBufferInput: std_logic_vector(55 downto 0);
-signal exMemBufferOutput: std_logic_vector(55 downto 0);
+signal exMemBufferInput: std_logic_vector(56 downto 0);
+signal exMemBufferOutput: std_logic_vector(56 downto 0);
 
 -- Intermediate signals:
 
@@ -176,13 +178,13 @@ signal immIfIDBuffOut, inPortIfIDBuffOut: std_logic_vector(15 downto 0);
 -- id ex buff:
 signal immIdExBuffOut, src1IdExBuffOut, src2IdExBuffOut, inPortIdExBuffOut: std_logic_vector(15 downto 0);
 signal src1AddressIdExBuffOut, src2AddressIdExBuffOut, destIdExBuffOut: std_logic_vector(2 downto 0);
-signal memReadIdExBuffOut, memWriteIdExBuffOut, aluEnableIdExBuffOut, inportControlIdExBuffOut, wbEnableIdExBuffOut,  outPortControlIdExBuffOut : std_logic;
+signal memReadIdExBuffOut, memWriteIdExBuffOut, aluEnableIdExBuffOut, inportControlIdExBuffOut, wbEnableIdExBuffOut,  outPortControlIdExBuffOut, stackEnableIdExBuffOut : std_logic;
 signal aluOpIdExBuffOut: std_logic_vector(4 downto 0);
 
 -- ex mem buff:
 signal aluResultExMemBuffOut, aluAddressExMemBuffOut, inPortExMemBuffOut : std_logic_vector(15 downto 0);
 signal destExMemBuffOut: std_logic_vector(2 downto 0);
-signal memReadExMemBuffOut, memWriteExMemBuffOut, inportControlExMemBuffOut, wbEnableExMemBuffOut,  outPortControlExMemBuffOut : std_logic;
+signal memReadExMemBuffOut, memWriteExMemBuffOut, inportControlExMemBuffOut, wbEnableExMemBuffOut,  outPortControlExMemBuffOut, stackEnableExMemBuffOut : std_logic;
 
 
 -- m1m2 buff
@@ -225,10 +227,11 @@ conditionalJmp, hduPcStall, stallIDEXBuffer, flushIFIDBuffer , flushIDEXBuffer, 
 );
 
 
---                             83          82 - 67                   66-64               63-61             60-58          57             56-41  40-25  24-20    19         18          17          16     15-0
-idExBufferInput <= ( outportControl & immIfIDBuffOut  & src1IfIDBuffOut & src2IfIDBuffOut & destIfIDBuffOut & inportControl & src1 & src2 & aluOp & aluEnable & memWrite & memRead & wbEnable & inport);
-ID_EX_Buffer: buff generic map(84) port map(stallIDEXBuffer, clk, flushIDEXBuffer, idExBufferInput, idExBufferOutput);
+--                                          83          82 - 67                   66-64               63-61             60-58          57             56-41  40-25  24-20    19         18          17          16     15-0
+idExBufferInput <= ( stackEnable & outportControl & immIfIDBuffOut  & src1IfIDBuffOut & src2IfIDBuffOut & destIfIDBuffOut & inportControl & src1 & src2 & aluOp & aluEnable & memWrite & memRead & wbEnable & inport);
+ID_EX_Buffer: buff generic map(85) port map(stallIDEXBuffer, clk, flushIDEXBuffer, idExBufferInput, idExBufferOutput);
 
+stackEnableIdExBuffOut <= idExBufferOutput(84);
 outPortControlIdExBuffOut <= idExBufferOutput(83);
 immIdExBuffOut <= idExBufferOutput (82 downto 67);
 src1AddressIdExBuffOut <= idExBufferOutput(66 downto 64);
@@ -258,9 +261,10 @@ Flags: buff generic map(3) port map('1', clk, rst, flagsIn, flagsOut);
 -- exMemBufferInput <= (dest &aluResult & aluAddress & memWrite & memRead & wbEnable & inportControl & inport);
 
 -- sizes:                                           3                             16             16                 1          +       1                  +       1                 
-exMemBufferInput <= (outPortControlIdExBuffOut & destIdExBuffOut & aluResult & aluAddress  & memWriteIdExBuffOut & memReadIdExBuffOut & wbEnableIdExBuffOut & inportControlIdExBuffOut & inportIdExBuffOut);
-EX_Mem_Buffer: buff generic map(56) port map('1', clk, rst, exMemBufferInput, exMemBufferOutput);
+exMemBufferInput <= (stackEnableIdExBuffOut & outPortControlIdExBuffOut & destIdExBuffOut & aluResult & aluAddress  & memWriteIdExBuffOut & memReadIdExBuffOut & wbEnableIdExBuffOut & inportControlIdExBuffOut & inportIdExBuffOut);
+EX_Mem_Buffer: buff generic map(57) port map('1', clk, rst, exMemBufferInput, exMemBufferOutput);
 
+stackEnableExMemBuffOut <= exMemBufferOutput(56);
 outPortControlExMemBuffOut <= exMemBufferOutput(55);
 destExMemBuffOut <= exMemBufferOutput(54 downto 52);
 aluResultExMemBuffOut <= exMemBufferOutput(51 downto 36);
@@ -271,10 +275,11 @@ wbEnableExMemBuffOut <= exMemBufferOutput(17);
 inportControlExMemBuffOut <= exMemBufferOutput(16);
 inportExMemBuffOut <= exMemBufferOutput(15 downto 0);
 
+-- Memory Stage: --------------------------------------------------------------
 
 Mem_Stage: memstage port map(clk, memWriteExMemBuffOut, memReadExMemBuffOut, aluAddressExMemBuffOut,
  aluResultExMemBuffOut,
- memReadData);
+ memReadData, stackEnableExMemBuffOut);
 -- Might be a problem in the output
 
 --      sizes                                                                                               3                16             1                         1                          16             =   37

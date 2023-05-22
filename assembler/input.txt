@@ -15,7 +15,7 @@
                     
 .org 20
 SETC						# this instruction should be at address 20h
-NOT R1,R2					# this instruction should be at address 21h
+NOT R1,R2					# this instruction should be at address 21h 
 INC R2,R3					# this instruction should be at address 22h 
 IADD R3,R2,100 				# this instruction should be at address 23h & 24h, 100 is hex format (256 decimal)
 
