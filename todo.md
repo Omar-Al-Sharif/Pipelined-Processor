@@ -1,0 +1,5 @@
+- Reg file will take Rdst as well and will output the value of Rdst 
+- Rdst value will pass through IDEX buffer
+- Rdst will come from IDEX buff to PC
+- Input to pc RdstAlu as well as RdstCode 
+- Input to pc conditional jmp + unconditional 

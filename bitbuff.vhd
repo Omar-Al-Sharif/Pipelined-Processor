@@ -1,19 +1,19 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity buff is    
-	generic (n: integer := 16);
+entity bitbuff is    
+	
 	port (enable, clk, rst: in std_logic;
-		d: in std_logic_vector(n-1 downto 0);
-		q: out std_logic_vector(n-1 downto 0));
-end entity buff;
+		d: in std_logic;
+		q: out std_logic);
+end entity bitbuff;
 
-architecture buff_arch of buff is
+architecture buff_arch of bitbuff is
 begin
 	process(clk)
 	begin
 		if (rst='1') then
-			q<=(others=>'0');
+			q<=('0');
 		elsif rising_edge(clk) and enable='1' then
 			q<=d;
 		end if;

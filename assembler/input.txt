@@ -1,0 +1,19 @@
+.org 0
+SETC
+IADD R1,R1,50
+STD R1,R1
+INC R1,R1                     #INTERRUPT HERE                      #INTERRUPT HERE
+NOP
+NOP
+NOP
+#JMP R1
+#OUT R3 	
+
+
+.org 80
+SETC
+ADD R1,R1,R1
+SETC
+JC R1
+AND R5,R3,R4
+INC R4
